@@ -17,7 +17,7 @@ body {
     align-items: center; /*Centrar los elementos del body de manera horizontal*/
     min-height: 100vh; /*Mantener la altura de la ventana del navegador en 100%, vh: viewportheight*/
     overflow: hidden;
-    background-image: url('fondoq.png'); 
+    background-image: url('https://cdn.computerhoy.com/sites/navi.axelspringer.es/public/media/image/2020/12/china-nepal-llegan-acuerdo-fin-sabemos-altura-exacta-everest-2163191.jpg?tf=3840x'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -34,7 +34,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: 100px;
+    /*margin-left: 100px;*/
 }
 
 .fullbox .form-label {
