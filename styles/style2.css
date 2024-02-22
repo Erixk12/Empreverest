@@ -10,40 +10,21 @@
     font-family: "Poppins", sans-serif;
 }
 
-.parent {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-    grid-column-gap: 20px;
-    grid-row-gap: 20px;
-    }
-    
-    .div1 { grid-area: 1 / 1 / 2 / 3; }
-    .div2 { grid-area: 1 / 3 / 2 / 5; }
-    .div3 { grid-area: 2 / 3 / 3 / 5; }
-    .div4 { grid-area: 3 / 3 / 4 / 4; }
-    .div5 { grid-area: 3 / 4 / 4 / 5; }
-    .div6 { grid-area: 4 / 3 / 5 / 5; }
-    .div7 { grid-area: 4 / 1 / 5 / 3; }
-    .div8 { grid-area: 3 / 1 / 4 / 3; }
-    .div9 { grid-area: 2 / 1 / 3 / 3; }
-
-
 
 /*Aplicar al cuerpo de la página*/
 body {
     display: flex; /*Contenedor flexible*/
-    justify-content: flex-start; /*Centrar los elementos del body de manera vertical*/
+    justify-content: center; /*Centrar los elementos del body de manera vertical*/
     align-items: center; /*Centrar los elementos del body de manera horizontal*/
     min-height: 100vh; /*Mantener la altura de la ventana del navegador en 100%, vh: viewportheight*/
-    overflow: hidden;
-    background-attachment: fixed; /* Fijar el fondo en la ventana del navegador */
+    /*overflow: hidden;*/
+    /*background-attachment: fixed; /* Fijar el fondo en la ventana del navegador */
     
 }
 
 .fullbox {
     height: 1000px;
-    width: 800px;
+    width: 900px;
     border: 2px solid rgba(255, 255, 255, 0.93);
     background: rgba(255, 255, 255, 0.93);
     box-shadow: 0 0 10px rgba(0,0,0,.3);
@@ -52,7 +33,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    
+    border-radius: 50px;
 }
 
 .fullbox .form-label {
@@ -73,7 +54,7 @@ body {
 /*Aplicar estilo a las cajas de insertar correo electronico y contraseña*/
 .fullbox .input-box {
     position: relative;
-    width: 700px; /*Ancho*/
+    width: 100%; /*Ancho*/
     height: 50px; /*Alto*/ 
     margin: 30px 0px; /* Altura desde el centro (px), Anchura desde el centro (px) */
     margin-bottom: 50px;
@@ -159,7 +140,7 @@ body {
     transition: background-color 0.3s ease; /* Transición suave para el cambio de color de fondo */
 }
 
-.fullbox .botonAtras {
+.botonAtras {
     width: 50px;
     height: 50px;
     background: #e9e9e9ab;
@@ -213,20 +194,21 @@ body {
     position: relative;
     display: inline-block;
     width: 100%; /* Ancho */
-    height: 100%; /* Alto */
+    height: 50px; /* Alto */
 }
 
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: rgba(78, 171, 224, 0.26);
+.dropdown-btn {
+    width: calc(100% - 25px); /* Ajustamos el ancho para tener en cuenta el padding */
+    height: 100%; /* Mantenemos la misma altura */
+    outline: none;
     border: 2px solid rgba(255, 255, 255, .2);
-    border-radius: 10px; /* Redondear */
-    width: 100%;
-    padding: 20px 45px 20px 20px;
+    background: rgba(78, 171, 224, 0.26);
+    border-radius: 10px;
     font-size: 16px;
     color: #0B6380;
-    z-index: 1;
+    padding: 15px 25px; /* Ajustamos el padding */
+    
+    cursor: pointer;
 }
 
 .dropdown:hover .dropdown-content {
@@ -241,18 +223,19 @@ body {
 
 .dropdown-content a:hover {
     background-color: rgba(0, 0, 0, 0.1);
+
 }
 
 .dropdown-btn {
-    width: 100%; /* Ancho */
-    height: 100%; /* Alto */
-    background: transparent;
+    width: 100%;
+    height: 50px; /* ajustamos el alto */
     outline: none;
     border: 2px solid rgba(255, 255, 255, .2);
     background: rgba(78, 171, 224, 0.26);
-    border-radius: 10px; /* Redondear */
+    border-radius: 10px;
     font-size: 16px;
     color: #0B6380;
-    padding: 20px 45px 20px 20px;
+    padding: 0 45px 0 20px; /* ajustamos el padding */
     cursor: pointer;
+    
 }
