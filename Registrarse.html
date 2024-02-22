@@ -21,12 +21,12 @@
 <body>
     <button class="botonAtras"><img
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAARVJREFUWEft1tENgjAQANBrJ3EU3YLUfuAk6iSSWBvG0E3YBMVogqVwvaYcmJTflvb1Du4qYGWPWJkHMgjLSI7QrBHSWm+NMXdsE8p4dMr2Sl0EQPna7GSsPVM2nZobBeph3msLgMPV2ioFigxyMS1AdbP2kALzOVz4UnNjSCAOTDCICxME4sSgIG7MJGgJzCjIg2kEQJI68/NPS/lwK/2gDrmY8KIQNXNQ5QcgrdSxawdRy9NfwkHdmi6qBVguZd9DeiKVtImOBXOyly2BQpsrNwoF+b6p1HegfvqCQJyoYBAXigTiQJFBXpSUu1SX/ShQH5XyPo1eP7BOUBbFpqrrBptHGY+OEGUTytwMwqKVI/R3EXoC7pWDJagfFZwAAAAASUVORK5CYII=" /></button>
+    
     <div class="fullbox">
-        <form action="">
-            <div class="title-container">
-                <h1>Registrarse</h1>
-            </div>
+        <h1>Registrarse</h1>
 
+        <!-- Columna 1 -->
+        <div>
             <!-- Campo Nombre -->
             <div class="input-box">
                 <label for="nombre" class="form-label">Nombre</label>
@@ -39,6 +39,29 @@
                 <input type="text" id="apellidos" placeholder="Apellidos">
             </div>
 
+            <!-- Dropdown Centro Universitario -->
+            <div class="input-box">
+                <label for="centroUniversitario" class="form-label">Centro Universitario</label>
+                <select id="centroUniversitario" class="dropdown-btn">
+                    <option value="">Seleccionar</option>
+                    <option value="centro1">Centro 1</option>
+                    <option value="centro2">Centro 2</option>
+                    <option value="centro3">Centro 3</option>
+                </select>
+            </div>
+
+            <!-- Código de Alumno -->
+            <div class="input-box">
+                <label for="codigoAlumno" class="form-label">Código de Alumno</label>
+                <input type="text" id="codigoAlumno" placeholder="Código de Alumno">
+            </div>
+
+            <!-- Registrarse con Google -->
+            <button class="botonGoogle"> <img src="src-ico/google.png" alt="">  Registrarse con Google</button>
+        </div>
+
+        <!-- Columna 2 -->
+        <div>
             <!-- Campo Correo Electrónico -->
             <div class="input-box">
                 <label for="email" class="form-label">Correo Electrónico</label>
@@ -49,27 +72,10 @@
             <div class="input-box">
                 <label for="password" class="form-label">Contraseña</label>
                 <input type="password" id="password" placeholder="Contraseña">
-            </div>
-
-            <!-- Campo Confirmar Contraseña -->
-            <div class="input-box">
-                <label for="confirm-password" class="form-label">Confirmar Contraseña</label>
-                <input type="password" id="confirm-password" placeholder="Confirmar Contraseña">
-            </div>
-
-            <!-- Dropdown Centro Universitario -->
-            <div class="dropdown">
-                <label for="centroUniversitario" class="form-label">Centro Universitario</label>
-                <select id="centroUniversitario" class="dropdown-btn">
-                    <option value="">Seleccionar</option>
-                    <option value="centro1">Centro 1</option>
-                    <option value="centro2">Centro 2</option>
-                    <option value="centro3">Centro 3</option>
-                </select>
-            </div>
+            </div>            
 
             <!-- Dropdown Género -->
-            <div class="dropdown">
+            <div class="input-box">
                 <label for="genero" class="form-label">Género</label>
                 <select id="genero" class="dropdown-btn">
                     <option value="">Seleccionar</option>
@@ -80,7 +86,7 @@
             </div>
 
             <!-- Dropdown Tipo de Cuenta -->
-            <div class="dropdown">
+            <div class="input-box">
                 <label for="tipoCuenta" class="form-label">Tipo de Cuenta</label>
                 <select id="tipoCuenta" class="dropdown-btn">
                     <option value="">Seleccionar</option>
@@ -91,11 +97,11 @@
             </div>
 
             <!-- Botón de Registrarse -->
-            <button type="submit" class="botonIniciarSesion" data-toggle="modal"
-                data-target="#exampleModalCenter">Registrarse</button>
-
-        </form>
+            <button type="submit" class="botonIniciarSesion" data-toggle="modal" data-target="#exampleModalCenter">Registrarse</button>
+        </div>
     </div>
+    
+    
+    
 </body>
-
 </html>
