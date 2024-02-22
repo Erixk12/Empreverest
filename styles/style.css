@@ -17,7 +17,7 @@ body {
     align-items: center; /*Centrar los elementos del body de manera horizontal*/
     min-height: 100vh; /*Mantener la altura de la ventana del navegador en 100%, vh: viewportheight*/
     overflow: hidden;
-    background-image: url('/src-bg/fondo.svg'); 
+    background-image: url('https://cdn.computerhoy.com/sites/navi.axelspringer.es/public/media/image/2020/12/china-nepal-llegan-acuerdo-fin-sabemos-altura-exacta-everest-2163191.jpg?tf=3840x'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -26,8 +26,8 @@ body {
 }
 
 .fullbox {
-    height: 1000px;
-    width: 800px;
+    height: 100vh;
+    width: 600px;
     border: 2px solid rgba(255, 255, 255, 0.93);
     background: rgba(255, 255, 255, 0.93);
     box-shadow: 0 0 10px rgba(0,0,0,.3);
@@ -57,7 +57,7 @@ body {
 /*Aplicar estilo a las cajas de insertar correo electronico y contraseña*/
 .fullbox .input-box {
     position: relative;
-    width: 700px; /*Ancho*/
+    width: 100%; /*Ancho*/
     height: 50px; /*Alto*/ 
     margin: 30px 0px; /* Altura desde el centro (px), Anchura desde el centro (px) */
     margin-bottom: 50px;
@@ -114,7 +114,7 @@ body {
 
 /*Decoración para el boton de iniciar sesion*/
 .fullbox .botonIniciarSesion {
-    width: 100%;
+    width: 500px;
     height: 45px;
     background: #0B6380;
     border: none;
