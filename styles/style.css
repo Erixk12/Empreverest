@@ -17,7 +17,7 @@ body {
     align-items: center; /*Centrar los elementos del body de manera horizontal*/
     min-height: 100vh; /*Mantener la altura de la ventana del navegador en 100%, vh: viewportheight*/
     overflow: hidden;
-    background-image: url('fondo.svg'); 
+    background-image: url('/src-bg/fondo.svg'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
