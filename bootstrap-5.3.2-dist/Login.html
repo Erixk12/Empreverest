@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empreverest</title>
+
+    <!-- Referenciar para Bootstrap-->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <link rel = "stylesheet" href="style.css">
+
+    <!-- Referenciar para BoxIcons-->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+
+    <!-- Referenciar para AwesomeFont-->
+    <link href="/your-path-to-fontawesome/css/fontawesome.css" rel="stylesheet">
+    <link href="/your-path-to-fontawesome/css/brands.css" rel="stylesheet">
+    <link href="/your-path-to-fontawesome/css/solid.css" rel="stylesheet">
+
+    <!--Paleta de colores 
+    Texto dentro de los botones - 
+    botones - 4EABE0 26% opacidad 
+    Letra de botones - 818798
+    botones de confirmacion - 0B6380
+    Fondo - 
+
+    Tipo de Letra
+    Letra para titulos - Poppins Bold 60
+    letra para textos - Poppins regular 30
+    -->
+  
+</head>
+<body>
+
+  <div class="fullbox">
+    <form action="">
+      <h1>Iniciar Sesión</h1>
+      
+      <!-- Caja para ingresar el correo electronico-->
+      <div class="input-box">
+        <label for="exampleFormControlInput1" class="form-label">Correo electrónico</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Correo electrónico">
+        <i class='bx bx-user'></i>
+      </div>
+
+      <!-- Caja para ingresar la contraseña-->
+      <div class="input-box">
+        <label for="inputPassword5" class="form-label">Contraseña</label>
+        <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock" placeholder="Contraseña"> 
+        <div id="passwordHelpBlock" class="form-text"></div>
+        <i class='bx bx-lock-alt'></i>
+      </div>
+
+      <!-- Link en caso de que el usuario halla olvidado la contraseña-->
+      <div class="olvidarContraseña">
+        <label>
+          <a href="#">¿Olvidaste tu contraseña?</a>
+        </label>
+      </div>
+
+      <!--Boton para iniciar sesion-->
+      <button type = "submit" class="botonIniciarSesion">Iniciar Sesión</button>
+
+      <!--link para registrarse-->
+      <div class="registrarse">
+        <p>¿No tienes una cuenta? <a href="#">Regístrate</a> </p>
+      </div>
+
+
+    </form>
+  </div>
+
+
+</body>
+</html>
+
+<!-- Comentario de aprendizaje de Isaac
+- <div> es un contenedor generico
+- <div class = ""> Asignar un nombre a una clase 
+
+- La etiqueta <i> viene de BoxIcons
+
+- <h1> es la etiqueta de mayor nivel, es decir el titulo  principal
+- conforme aumente el numero de etiqueta de <h>, indica menor nivel para un titulo
+
+- La etiqueta <a href> hace referencia a hipervinculos 
+  
+Referencias o sitios de ayuda
+- https://boxicons.com/?query=lock
+-->

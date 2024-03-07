@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empreverest</title>
+    <!-- Referenciar para Bootstrap-->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="styles/style3.css">
+
+    <!-- Referenciar para BoxIcons-->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- Referenciar para AwesomeFont-->
+    <link href="/your-path-to-fontawesome/css/fontawesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css">
+    <link href="/your-path-to-fontawesome/css/brands.css" rel="stylesheet">
+    <link href="/your-path-to-fontawesome/css/solid.css" rel="stylesheet">
+    <!-- Link to Flickity CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flickity/2.2.2/flickity.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="src-ico/empreverest.svg" alt="Bootstrap" width="60" height="60">
+              </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="#">Acerca de nosotros</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Contáctanos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">blog</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#">Crear una cuenta</a>
+                    </li>
+                </ul>
+            </div>
+            <form class="d-flex ml-auto">         
+              <button class="btn custom-button">
+                  <i class="fa-solid fa-circle-user fa-flip-horizontal fa-2x" style="color: #ffffff; margin-right: 5px;"></i> Iniciar sesión
+              </button>
+          </form>
+        </div>
+    </nav>
+
+      <div class="container mt-4">
+          <div class="row">
+              <div class="col">
+                  <img src="src-img/img-landingpage.png" class="img-fluid" alt="EMPREVEREST">
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-md-6">
+                  <!-- Primer elemento -->
+                  <div class="grid-container">
+                      <div class="icono">
+                          <!-- Aquí va tu icono grande -->
+                          <i class="fa-solid fa-users fa-5x" style="background-image: linear-gradient(to bottom, #0b6380, #b3d3de); -webkit-background-clip: text; color: transparent;"></i>
+
+                      </div>
+                      <div class="grid-content">
+                          <h1>Colabora</h1>
+                          <p>Potencia tu proyecto trabajando en equipo. Fomentamos la colaboración, conectando mentes creativas para impulsar ideas innovadoras. </p>
+                      </div>
+                  </div>
+
+                  <!-- Tercer elemento -->
+                  <div class="grid-container">
+                      <div class="icono">
+                          <!-- Aquí va tu icono grande -->
+                          <i class="fa-solid fa-chart-line fa-5x" style="background-image: linear-gradient(to bottom, #0b6380, #b3d3de); -webkit-background-clip: text; color: transparent;"></i>
+                      </div>
+                      <div class="grid-content">
+                        <h1>Gestiona</h1>
+                        <p>
+                          Aprende a planificar, organizar y ejecutar eficazmente tus ideas. Te guiaremos en el camino para convertir tus proyectos en logros tangibles.
+                        </p>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                  <!-- Segundo elemento -->
+                  <div class="grid-container">
+                      <div class="icono">
+                          <!-- Aquí va tu icono grande -->
+                          <i class="fa-solid fa-book fa-5x" style="background-image: linear-gradient(to bottom, #0b6380, #b3d3de); -webkit-background-clip: text; color: transparent;"></i>
+                        </div>
+                      <div class="grid-content">
+                        <h1>Aprende</h1>
+                        <p>
+                          Sumérgete con nuestro contenido especializado. <strong>Empreverest </strong> te guía a través de la creación de tu proyecto, preparándote para el éxito emprendedor.
+                        </p>
+                      </div>
+                  </div>
+
+                  <!-- Cuarto elemento -->
+                  <div class="grid-container">
+                      <div class="icono">
+                          <!-- Aquí va tu icono grande -->
+                          <i class=" fas fa-regular fa-file fa-5x" style="background-image: linear-gradient(to bottom, #0b6380, #b3d3de); -webkit-background-clip: text; color: transparent;"></i>
+                      </div>
+                      <div class="grid-content">
+                          <h1>Crea</h1>
+                          <p>
+                            Transforma tus ideas en realidades. <strong>Empreverest</strong> te brinda las herramientas y la inspiración necesarias para materializar tu visión emprendedora.
+                          </p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+                 
+
+          <!-- Flickity HTML init -->
+          <div class="container carousel-container"> 
+            <div class="row">
+              <div class="gallery js-flickity" data-flickity-options='{ "wrapAround": true, "autoPlay": true, "pauseAutoPlayOnHover": true }'>
+                <div class="gallery-cell">
+                  <img src="src-img/1.png">
+                </div>
+                <div class="gallery-cell">
+                  <img src="src-img/2.png">
+                </div>
+                <div class="gallery-cell">
+                  <img src="src-img/3.png">
+                </div>
+                <div class="gallery-cell">
+                  <img src="src-img/2.png">
+                </div>
+              </div>
+          </div>
+          <div class="blog">
+            <p>
+              <h1>Consulta nuestro blog</h1>
+              Explora un mundo de conocimiento e inspiración en nuestro blog. Desde consejos prácticos hasta historias de éxito, nuestro blog es tu fuente de recursos valiosos. <strong>¡Visita nuestro blog y potencia tu camino hacia el emprendimiento hoy mismo!</strong>
+            </p>
+          </div>
+
+          <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                  <!-- Contenido de la primera columna -->
+                    <div class="grid text-center">
+                        <div class="g-col-3">
+                            <div class="card" style="width: 18rem;">
+                                <img src="src-img/4.png" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <br>
+                                    <h5 class="card-title">Los 5 Pilares del Aprendizaje Emprendedor.</h5>
+                                    <br>
+                                    <a href="#" class="btn btn-primary boton-ver-blog">Ver Blog</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <!-- Contenido de la segunda columna -->
+                    <div class="grid text-center">
+                        <div class="g-col-3">
+                            <div class="card" style="width: 18rem;">
+                                <img src="src-img/6.png" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <br>
+                                    <h5 class="card-title">Cómo Construir una Marca Personal Efectiva en el Mundo Digital.</h5>
+                                    <br>
+                                    <a href="#" class="btn btn-primary boton-ver-blog">Ver Blog</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <!-- Contenido de la tercera columna -->
+                    <div class="grid text-center">
+                        <div class="g-col-3">
+                            <div class="card" style="width: 18rem;">
+                                <img src="src-img/5.png" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <br>
+                                    <h5 class="card-title">Lecciones Aprendidas: Historias Inspiradoras de Emprendedores Exitosos.</h5>
+                                    <br>
+                                    <a href="#" class="btn btn-primary boton-ver-blog">Ver Blog</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <!-- Contenido de la cuarta columna -->
+                    <div class="grid text-center">
+                        <div class="g-col-3">
+                          <div class="card h-100" style="width: 18rem;">
+                                <img src="src-img/7.png" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <br>
+                                    <h5 class="card-title">Desarrollo de Productos Innovadores: Estrategias y Técnicas</h5>
+                                    <br>
+                                    <a href="#" class="btn btn-primary boton-ver-blog">Ver Blog</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <footer class="footer">
+          <div class="container">
+              <div class="row">
+                  <div class="col-12 text-center">
+                      <a href="#">Términos de uso</a> |
+                      <a href="#">Política de privacidad</a> |
+                      Hecho en México y para México. &copy; EMPREVEREST 2024
+                  </div>
+              </div>
+          </div>
+      </footer>
+      </div>
+
+      
+    
+
+      <!-- Link to Flickity JS -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/2.2.2/flickity.pkgd.min.js"></script>
+      <!-- Initialize Flickity -->
+      <script>
+        window.addEventListener('load', function() {
+          var flkty = new Flickity('.gallery', {
+            wrapAround: true,
+            autoPlay: true,
+            pauseAutoPlayOnHover: true
+          });
+
+          // Calculate and set the height of the carousel to the maximum image height
+          function setCarouselHeight() {
+          var maxHeight = 0;
+          var cells = flkty.cells;
+          for (var i = 0; i < cells.length; i++) {
+            var cellHeight = cells[i].element.offsetHeight;
+            if (cellHeight > maxHeight) {
+              maxHeight = cellHeight;
+            }
+          }
+          flkty.element.style.height = maxHeight + 'px';
+        }
+    
+        // Call the function initially and whenever the window is resized
+        setCarouselHeight();
+        window.addEventListener('resize', setCarouselHeight);
+      });
+
+      </script>
+</body>
+</html>
