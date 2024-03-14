@@ -150,7 +150,7 @@ body {
     border-radius: 10px;
     cursor: pointer;
     margin-top: 30px;
-    margin-left: -10px;
+    margin-left: 0px;
     transition: background-color 0.3s ease;
     position: fixed;
     top: 0;
