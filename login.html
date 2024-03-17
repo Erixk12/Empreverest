@@ -36,6 +36,10 @@
 <body>
 
   <div class="fullbox">
+    <a href="index.html">
+      <button class="botonAtras"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAARVJREFUWEft1tENgjAQANBrJ3EU3YLUfuAk6iSSWBvG0E3YBMVogqVwvaYcmJTflvb1Du4qYGWPWJkHMgjLSI7QrBHSWm+NMXdsE8p4dMr2Sl0EQPna7GSsPVM2nZobBeph3msLgMPV2ioFigxyMS1AdbP2kALzOVz4UnNjSCAOTDCICxME4sSgIG7MJGgJzCjIg2kEQJI68/NPS/lwK/2gDrmY8KIQNXNQ5QcgrdSxawdRy9NfwkHdmi6qBVguZd9DeiKVtImOBXOyly2BQpsrNwoF+b6p1HegfvqCQJyoYBAXigTiQJFBXpSUu1SX/ShQH5XyPo1eP7BOUBbFpqrrBptHGY+OEGUTytwMwqKVI/R3EXoC7pWDJagfFZwAAAAASUVORK5CYII="/></button>
+    </a>
+
     <form action="validarlogin.php" method="post">
 
       <h1>Iniciar Sesión</h1>
@@ -52,8 +56,26 @@
         <label for="inputPassword5" class="form-label">Contraseña</label>
         <input type="password" id="inputPassword5" class="form-control" name="contraseña" aria-describedby="passwordHelpBlock" placeholder="Contraseña" required> 
         <div id="passwordHelpBlock" class="form-text"></div>
-        <i class='bx bx-lock-alt'></i>
+        <i id="togglePassword" class='bx bx-lock-alt'></i> 
       </div>
+
+      <script>
+        // Función para alternar entre contraseña visible y oculta
+        document.getElementById('togglePassword').addEventListener('click', function() {
+          var passwordInput = document.getElementById('inputPassword5');
+          var toggleIcon = document.getElementById('togglePassword');
+
+          if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            toggleIcon.classList.remove('bx-lock-alt');
+            toggleIcon.classList.add('bx-lock-open-alt');
+          } else {
+            passwordInput.type = 'password';
+            toggleIcon.classList.remove('bx-lock-open-alt');
+            toggleIcon.classList.add('bx-lock-alt');
+          }
+        });
+      </script>
 
       <!-- Link en caso de que el usuario halla olvidado la contraseña-->
       <div class="olvidarContraseña">
@@ -71,17 +93,49 @@
       </div>
 
       <!--Boton para iniciar sesion con Google-->
-      <button class="botonGoogle"><img src="src-ico/google.png"></box-icon></button>
+      <button class="botonGoogle" button type="button"> <img src="src-ico/google.png"></box-icon></button>
 
     </form>
-    <a href="index.html" class="botonAtras">
-      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAARVJREFUWEft1tENgjAQANBrJ3EU3YLUfuAk6iSSWBvG0E3YBMVogqVwvaYcmJTflvb1Du4qYGWPWJkHMgjLSI7QrBHSWm+NMXdsE8p4dMr2Sl0EQPna7GSsPVM2nZobBeph3msLgMPV2ioFigxyMS1AdbP2kALzOVz4UnNjSCAOTDCICxME4sSgIG7MJGgJzCjIg2kEQJI68/NPS/lwK/2gDrmY8KIQNXNQ5QcgrdSxawdRy9NfwkHdmi6qBVguZd9DeiKVtImOBXOyly2BQpsrNwoF+b6p1HegfvqCQJyoYBAXigTiQJFBXpSUu1SX/ShQH5XyPo1eP7BOUBbFpqrrBptHGY+OEGUTytwMwqKVI/R3EXoC7pWDJagfFZwAAAAASUVORK5CYII=" alt="Botón atrás">
-    </a>
-
   </div>
 
 </body>
 </html>
+
+<div class="toast fixed-top position-absolute bg-danger" style="position: absolute; top: 15px; left: 85%; transform: translateX(-50%);" id="loginToast" role="alert" aria-live="assertive" aria-atomic="true">
+  <div class="d-flex">
+    <div class="toast-body text-white">  
+      Hello, world! This is a toast message.
+    </div>
+    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+  </div>
+</div>
+
+<script>
+  // Obtener los parámetros de la URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const loginStatus = urlParams.get('login');
+  const errorType = urlParams.get('error');
+
+  // Mostrar el toast correspondiente según el parámetro de error
+  if (loginStatus === 'fail') {
+      if (errorType === 'incorrect_password') {
+          // Contraseña incorrecta
+          document.querySelector('.toast-body').innerText = 'Contraseña incorrecta'; // Seleccionamos por clase
+          showToast();
+      } else if (errorType === 'not_registered') {
+          // Usuario no registrado
+          document.querySelector('.toast-body').innerText = 'El usuario no está registrado'; // Seleccionamos por clase
+          showToast();
+      }
+  }
+
+  // Función para mostrar el toast
+  function showToast() {
+      const toastEl = document.getElementById('loginToast');
+      const toast = new bootstrap.Toast(toastEl);
+      toast.show();
+  }
+</script>
 
 <!-- Comentario de aprendizaje de Isaac
 - <div> es un contenedor generico
