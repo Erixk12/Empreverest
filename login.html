@@ -32,7 +32,8 @@
     letra para textos - Poppins regular 30
     -->
   
-</head>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+  </head>
 <body>
 
   <div class="fullbox">
@@ -95,13 +96,25 @@
       <!--Boton para iniciar sesion con Google-->
       <button class="botonGoogle" button type="button"> <img src="src-ico/google.png"></box-icon></button>
 
+      <!--reCAPTCHA-->
+      <script>
+        function onSubmit(token) {
+          document.getElementById("demo-form").submit();
+        }
+      </script>
+
+      <button class="g-recaptcha" 
+      data-sitekey="6LeriJspAAAAAD_UGlSansdlmb6cKYvYWku9dRuG" 
+      data-callback='onSubmit' 
+      data-action='submit'>Submit</button>
+
     </form>
   </div>
 
 </body>
 </html>
 
-<div class="toast fixed-top position-absolute bg-danger" style="position: absolute; top: 15px; left: 85%; transform: translateX(-50%);" id="loginToast" role="alert" aria-live="assertive" aria-atomic="true">
+<div class="toast fixed-top position-absolute bg-danger" style="position: absolute; top: 15px; left: 50%; transform: translateX(-50%);" id="loginToast" role="alert" aria-live="assertive" aria-atomic="true">
   <div class="d-flex">
     <div class="toast-body text-white">  
       Hello, world! This is a toast message.
