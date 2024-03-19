@@ -26,7 +26,7 @@ if ($result->num_rows > 0) {
     // Comparar la contraseña ingresada con la contraseña almacenada en la base de datos
     if ($contraseña_hash === $contraseña_db) {
         // Inicio de sesión exitoso
-        header("Location: login.html?login=success");
+        header("Location: Dashboard.html");
         exit();
     } else {
         // Contraseña incorrecta

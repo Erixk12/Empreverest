@@ -87,7 +87,7 @@
       </div>
 
       <!--Boton para iniciar sesion-->
-      <button type="button" id="entrar" class="botonIniciarSesion">Iniciar Sesión</button>
+      <button type="submit" id="entrar" class="botonIniciarSesion">Iniciar Sesión</button>
 
       <!--link para registrarse-->
       <div class="registrarse">
@@ -122,7 +122,7 @@
   if (loginStatus === 'fail') {
       if (errorType === 'incorrect_password') {
           // Contraseña incorrecta
-          document.querySelector('.toast-body').innerText = 'Contraseña incorrecta'; // Seleccionamos por clase
+          document.querySelector('.toast-body').innerText = 'Contraseña o usuario incorrecto'; // Seleccionamos por clase
           showToast();
       } else if (errorType === 'not_registered') {
           // Usuario no registrado
