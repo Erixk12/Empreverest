@@ -1,12 +1,90 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Empreverest</title>
+    <link rel="stylesheet" href="styles/styleCrearProyecto.css">
+
+    <!-- Referenciar para Bootstrap-->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="styles/style3.css">
+
+    <!-- Referenciar para BoxIcons-->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- Referenciar para AwesomeFont-->
+    <link href="/your-path-to-fontawesome/css/fontawesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css">
+    <link href="/your-path-to-fontawesome/css/brands.css" rel="stylesheet">
+    <link href="/your-path-to-fontawesome/css/solid.css" rel="stylesheet">
+    <!-- Link to Flickity CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flickity/2.2.2/flickity.min.css">
+
 </head>
+
+
+
 <body>
-    <h1>  </h1>
+    <a href="*.html">
+      <button class="botonAtras"><img
+      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAARVJREFUWEft1tENgjAQANBrJ3EU3YLUfuAk6iSSWBvG0E3YBMVogqVwvaYcmJTflvb1Du4qYGWPWJkHMgjLSI7QrBHSWm+NMXdsE8p4dMr2Sl0EQPna7GSsPVM2nZobBeph3msLgMPV2ioFigxyMS1AdbP2kALzOVz4UnNjSCAOTDCICxME4sSgIG7MJGgJzCjIg2kEQJI68/NPS/lwK/2gDrmY8KIQNXNQ5QcgrdSxawdRy9NfwkHdmi6qBVguZd9DeiKVtImOBXOyly2BQpsrNwoF+b6p1HegfvqCQJyoYBAXigTiQJFBXpSUu1SX/ShQH5XyPo1eP7BOUBbFpqrrBptHGY+OEGUTytwMwqKVI/R3EXoC7pWDJagfFZwAAAAASUVORK5CYII=" /></button>
+    </a>
+
+    <div class="fullbox">
+        <h1 class="h1">Crear proyecto</h1>
+
+        <form action="#">
+
+          <div class="input-box">
+            <label for="nombre-proyecto" class="form-label">Nombre del proyecto</label>
+            <input type="text" id="nombre-proyecto" name="nombre-proyecto"
+            placeholder="Ingresa nombre para el proyecto">
+          </div>
+
+          <div >
+            <label for="logo-proyecto" class="form-label">Logo del proyecto</label>
+            <input type="file" id="logo-proyecto" name="logo-proyecto" > 
+          </div>
+
+          <div class="input-box">
+            <label for="descripcion-proyecto" class="form-label">Descripción</label>
+            <textarea id="descripcion-proyecto" name="descripcion-proyecto" 
+            placeholder="Describe brevemente el proyecto"></textarea>
+          </div>
+          
+          <div >
+            <label for="categoria-proyecto" class="form-label"> Categoría</label>
+            <select id="categoria-proyecto"  class="dropdown-btn">
+              <option value="">Selecciona</option>
+              <option value="1">Tecnología</option>
+              <option value="2">Emprendimiento</option>
+              <option value="3">Arte y diseño</option>
+              <option value="4">Ciencia</option>
+            </select>
+            
+          </div>
+          <div class="input-box">
+            <label for="participantes-proyecto">Participantes</label>
+            <input type="text" id="participantes-proyecto" name="participantes-proyecto" 
+            placeholder="*">
+          </div>
+
+          <div class="input-box">
+            <label for="mentor-proyecto" class="form-label">Mentor emprendedor</label>
+            <select id="mentor-proyecto" name="mentor-proyecto" class="dropdown-btn">
+              <option value="">Seleccionar</option>
+              <option value="1">Juan Pérez</option>
+              <option value="2">Ana García</option>
+              <option value="3">Pedro López</option>
+            </select>
+          </div>
+          <button type="submit" class="botonRegistrarProyecto" data-toggle="modal" data-target="#exampleModalCenter">Registrar proyecto</button>
+        </form>
+
+
+      </div>
     
 </body>
 </html>
