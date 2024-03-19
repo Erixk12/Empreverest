@@ -32,7 +32,8 @@
     letra para textos - Poppins regular 30
     -->
   
-    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LeriJspAAAAAD_UGlSansdlmb6cKYvYWku9dRuG"></script>
+
   </head>
 <body>
 
@@ -41,7 +42,7 @@
       <button class="botonAtras"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAARVJREFUWEft1tENgjAQANBrJ3EU3YLUfuAk6iSSWBvG0E3YBMVogqVwvaYcmJTflvb1Du4qYGWPWJkHMgjLSI7QrBHSWm+NMXdsE8p4dMr2Sl0EQPna7GSsPVM2nZobBeph3msLgMPV2ioFigxyMS1AdbP2kALzOVz4UnNjSCAOTDCICxME4sSgIG7MJGgJzCjIg2kEQJI68/NPS/lwK/2gDrmY8KIQNXNQ5QcgrdSxawdRy9NfwkHdmi6qBVguZd9DeiKVtImOBXOyly2BQpsrNwoF+b6p1HegfvqCQJyoYBAXigTiQJFBXpSUu1SX/ShQH5XyPo1eP7BOUBbFpqrrBptHGY+OEGUTytwMwqKVI/R3EXoC7pWDJagfFZwAAAAASUVORK5CYII="/></button>
     </a>
 
-    <form action="validarlogin.php" method="post">
+    <form id="form-login" action="validarlogin.php" method="post">
 
       <h1>Iniciar Sesión</h1>
       
@@ -86,7 +87,7 @@
       </div>
 
       <!--Boton para iniciar sesion-->
-      <button type = "submit" class="botonIniciarSesion">Iniciar Sesión</button>
+      <button type="button" id="entrar" class="botonIniciarSesion">Iniciar Sesión</button>
 
       <!--link para registrarse-->
       <div class="registrarse">
@@ -95,18 +96,6 @@
 
       <!--Boton para iniciar sesion con Google-->
       <button class="botonGoogle" button type="button"> <img src="src-ico/google.png"></box-icon></button>
-
-      <!--reCAPTCHA-->
-      <script>
-        function onSubmit(token) {
-          document.getElementById("demo-form").submit();
-        }
-      </script>
-
-      <button class="g-recaptcha" 
-      data-sitekey="6LeriJspAAAAAD_UGlSansdlmb6cKYvYWku9dRuG" 
-      data-callback='onSubmit' 
-      data-action='submit'>Submit</button>
 
     </form>
   </div>
@@ -148,6 +137,21 @@
       const toast = new bootstrap.Toast(toastEl);
       toast.show();
   }
+</script>
+
+<script>
+  $(document).ready(function() {
+    $('#entrar').click(function(){
+      grecaptcha.ready(function() {
+        grecaptcha.execute('6LeriJspAAAAAD_UGlSansdlmb6cKYvYWku9dRuG', {action: 'validarUsuario'}).then(function(token) {
+          $('#form-login').prepend('<input type="hidden" name="token" value="' + token + '">');
+          $('#form-login').prepend('<input type="hidden" name="action" value="validarUsuario">');
+          $('#form-login').submit();
+        });
+      });
+    });
+
+  });
 </script>
 
 <!-- Comentario de aprendizaje de Isaac
