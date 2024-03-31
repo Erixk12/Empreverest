@@ -25,12 +25,18 @@ if ($result->num_rows > 0) {
 
     // Comparar la contraseña ingresada con la contraseña almacenada en la base de datos
     if ($contraseña_hash === $contraseña_db) {
-        echo "Inicio de sesión exitoso";
+        // Inicio de sesión exitoso
+        header("Location: Dashboard.html");
+        exit();
     } else {
-        echo "La contraseña es incorrecta";
+        // Contraseña incorrecta
+        header("Location: login.html?login=fail&error=incorrect_password");
+        exit();
     }
 } else {
-    echo "El usuario no está registrado.";
+    // El usuario no está registrado
+    header("Location: login.html?login=fail&error=not_registered");
+    exit();
 }
 
 // Cerrar la conexión
