@@ -64,6 +64,26 @@ body {
 }
 
 
+/* Estilos para dispositivos móviles */
+@media screen and (max-width: 800px) {
+    /* Reducir el tamaño del icono */
+    .icono i {
+      font-size: 3.5rem; /* Ajusta el tamaño del icono según sea necesario */
+    }
+  
+    /* Reducir el tamaño del título */
+    .grid-content h1 {
+      font-size: 1.5rem; /* Ajusta el tamaño del título según sea necesario */
+    }
+  
+    /* Reducir el tamaño del párrafo */
+    .grid-content p {
+      font-size: 1rem; /* Ajusta el tamaño del párrafo según sea necesario */
+    }
+  }
+  
+
+
 .gallery-cell {
     width: 66%;
     margin-right: 10px;
@@ -130,6 +150,49 @@ body {
     justify-content: center; /* Centra el contenido verticalmente */
     transition: transform 0.3s;
 }
+/* Estilos para dispositivos móviles */
+@media screen and (max-width: 768px) {
+    /* Reducir el ancho de las tarjetas */
+    .card {
+      width: 80%; /* Ancho ajustado para dispositivos móviles */
+      margin: 0 auto; /* Centrar horizontalmente */
+      margin-bottom: 20px; /* Espaciado entre tarjetas */
+    }
+  }
+  
+  @media screen and (min-width: 769px) and (max-width: 1199px) {
+    .col-md-3 {
+      flex: 0 0 50%; /* Establece el ancho de las columnas al 50% para lograr un diseño de 2x2 */
+      max-width: 50%; /* Establece el ancho máximo al 50% */
+      margin-bottom: 20px; /* Añade espacio entre las tarjetas */
+    }
+  
+    /* Centrar las tarjetas horizontalmente */
+    .card-container {
+      display: flex; /* Utilizar flexbox */
+      justify-content: center; /* Centrar horizontalmente */
+      flex-wrap: wrap; /* Permitir que las tarjetas se envuelvan en múltiples filas */
+    }
+  }
+  
+  /* Estilos para pantallas grandes */
+  @media (min-width: 1200px) {
+    /* Ajustar el diseño a una sola fila */
+    .col-md-3 {
+      flex: 0 0 calc(25% - 20px); /* Establece el ancho de las columnas al 25% con un margen de 20px entre ellas */
+      max-width: calc(25% - 20px); /* Establece el ancho máximo */
+      margin-bottom: 20px; /* Añade espacio entre las tarjetas */
+    }
+    .card-container {
+        display: flex; /* Utilizar flexbox */
+        justify-content: center; /* Centrar horizontalmente */
+        flex-wrap: wrap; /* Permitir que las tarjetas se envuelvan en múltiples filas */
+      }
+    }
+  
+  
+  
+  
 
 .footer {
     margin-top: 50px;
