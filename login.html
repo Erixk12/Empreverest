@@ -82,7 +82,7 @@
       <!-- Link en caso de que el usuario halla olvidado la contraseña-->
       <div class="olvidarContraseña">
         <label>
-          <a href="ForgotPassword.html">¿Olvidaste tu contraseña?</a>
+          <a id="olvidarContraseña">¿Olvidaste tu contraseña?</a>
         </label>
       </div>
 
@@ -99,6 +99,31 @@
 
     </form>
   </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog d-flex align-items-center justify-content-center">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form method="g" action="recon.php" id="formul">
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Correo electrónico</label>
+              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary">Enviar código</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
 </body>
 </html>
@@ -151,6 +176,23 @@
       });
     });
 
+  });
+</script>
+
+<script>
+  // Capturamos el enlace "¿Olvidaste tu contraseña?" por su ID
+  const olvidarContraseñaLink = document.getElementById('olvidarContraseña');
+
+  // Capturamos el modal por su ID
+  const modal = document.getElementById('exampleModal');
+
+  // Añadimos un evento de clic al enlace
+  olvidarContraseñaLink.addEventListener('click', function(event) {
+    // Prevenimos el comportamiento predeterminado del enlace
+    event.preventDefault();
+    // Mostramos el modal utilizando Bootstrap Modal
+    var myModal = new bootstrap.Modal(modal);
+    myModal.show();
   });
 </script>
 
