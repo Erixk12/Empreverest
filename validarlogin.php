@@ -22,7 +22,6 @@ if ($result->num_rows > 0) {
 
     // Obtener la contraseña hasheada almacenada en la base de datos
     $contraseña_db = $row["contraseña"];
-
     // Comparar la contraseña ingresada con la contraseña almacenada en la base de datos
     if ($contraseña_hash === $contraseña_db) {
         // Inicio de sesión exitoso
@@ -34,9 +33,18 @@ if ($result->num_rows > 0) {
         exit();
     }
 } else {
-    // El usuario no está registrado
-    header("Location: login.html?login=fail&error=not_registered");
-    exit();
+    //Validar que el correo electronico cumpla con la expresion regular
+    $pattern = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\.[a-zA-Z]{2,}$/";
+    if (!preg_match($pattern, $correoelectronico)) {
+        // Correo electrónico inválido
+        header("Location: login.html?login=fail&error=invalid_email");
+        exit();
+    }
+    else {
+        // El usuario no está registrado
+        header("Location: login.html?login=fail&error=not_registered");
+        exit();
+    }
 }
 
 // Cerrar la conexión

@@ -49,7 +49,7 @@
       <!-- Caja para ingresar el correo electronico-->
       <div class="input-box">
         <label for="exampleFormControlInput1" class="form-label">Correo electrónico</label>
-        <input type="email" class="form-control" id="exampleFormControlInput1" name="correoelectronico" placeholder="Correo electrónico" required>
+        <input type="email" class="form-control" id="exampleFormControlInput1" name="correoelectronico" placeholder="Correo electrónico" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\.udg\.mx$" required>        
         <i class='bx bx-user'></i>
       </div>
 
@@ -124,7 +124,6 @@
     </div>
   </div>
 
-
 </body>
 </html>
 
@@ -152,6 +151,10 @@
       } else if (errorType === 'not_registered') {
           // Usuario no registrado
           document.querySelector('.toast-body').innerText = 'El usuario no está registrado'; // Seleccionamos por clase
+          showToast();
+      } else if (errorType === 'invalid_email') {
+          // Correo electrónico inválido
+          document.querySelector('.toast-body').innerText = 'El correo electrónico no es válido'; // Seleccionamos por clase
           showToast();
       }
   }
