@@ -26,7 +26,7 @@ else {
     echo $enlace;
     $consulta = mysqli_query($conexion, "insert into solcon (idu, codigo)");
 
-    <?php
+    
     $para      = '$cor';
     $titulo    = 'Recuperar contraseña';
     $mensaje   = 'Recuperar';
@@ -34,8 +34,8 @@ else {
         'Reply-To: webmaster@empresa.com' . "\r\n" .
         'X-Mailer: PHP/' . phpversion();
     
-    mail($para, $titulo, $mensaje, $cabeceras);
-    ?>
+    mail($para, $titulo, $mensaje, $cabeceras);
+    
 }
 
 // Cerrar la conexión
