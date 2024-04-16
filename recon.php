@@ -1,7 +1,5 @@
 <?php
-include("con.php")
-// Establecer la conexión con la base de datos
-$conexion = new mysqli("localhost", "root", "Mi_218643758", "Empreverest");
+include("conexion.php");
 
 // Verificar la conexión
 if ($conexion->connect_error) {
@@ -12,15 +10,17 @@ if ($conexion->connect_error) {
 $correoelectronico = $_POST["email"];
 
 // Consulta para verificar si el usuario ya existe
-$sql_check_user = "SELECT contraseña FROM Usuarios WHERE correoelectronico = '$correoelectronico'";
-$result = $conexion->query($sql_check_user);
+$consulta = mysqli_query($conexion, "SELECT * FROM Usuarios WHERE correoelectronico = '$correoelectronico'");
 
-if ($result->num_rows > 0) {
-    
-} else {
-    // El usuario no está registrado
-    header("Location: login.html?login=fail&error=not_registered");
-    exit();
+while($fila = mysqli_fetch_array($consulta)){
+    $correoelectronico = $fila['correoelectronico'];
+    $id = $fila['id'];
+
+}
+
+if ($correoelectronico==NULL){header("location:index.php?valor=2");} 
+else {
+    $permited_chars
 }
 
 // Cerrar la conexión
