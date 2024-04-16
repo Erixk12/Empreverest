@@ -100,29 +100,30 @@
     </form>
   </div>
 
-  <!-- Modal -->
+  <form id="form-cambiarcontraseña" action="recon.php" method="post">
+  <!-- Modal de cambiar contraseña -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog d-flex align-items-center justify-content-center">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Recuperación de contraseña</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <form method="POST" action="recon.php" id="formul">
             <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label">Correo electrónico</label>
-              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+              <label for="email" class="form-label">Ingrese su Correo electrónico</label>
+              <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
             </div>
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary">Enviar código</button>
+          <button type="submit" class="btn btn-primary">Enviar código</button>
         </div>
       </div>
     </div>
   </div>
+  </form>
 
 </body>
 </html>
@@ -138,7 +139,7 @@
 
 <script>
   // Obtener los parámetros de la URL
-  const urlParams = new URLSearchParams(window.location.search);
+  const urlParams = new URLSearchParams(window.location.search); //Buscar la URL actual 
   const loginStatus = urlParams.get('login');
   const errorType = urlParams.get('error');
 
@@ -158,7 +159,32 @@
           showToast();
       }
   }
+  
+  // Función para mostrar el toast
+  function showToast() {
+      const toastEl = document.getElementById('loginToast');
+      const toast = new bootstrap.Toast(toastEl);
+      toast.show();
+  }
+</script>
 
+
+<script>
+  // Funcion para mosrtar el toasts en el cambio de contraseña
+  // Obtener los parámetros de la URL
+  const URL = new URLSearchParams(window.location.search); //Buscar la URL actual 
+  const Login = urlParams.get('login');
+  const Error = urlParams.get('error');
+
+  // Mostrar el toast correspondiente según el parámetro de error
+  if (Login === 'fail') {
+      if (errorType === 'empty_email') {
+          // Contraseña incorrecta
+          document.querySelector('.toast-body').innerText = 'Correo electrónico inexistente'; // Seleccionamos por clase
+          showToast();
+      } 
+  }
+  
   // Función para mostrar el toast
   function showToast() {
       const toastEl = document.getElementById('loginToast');
@@ -199,7 +225,25 @@
   });
 </script>
 
+<script>
+  // Función para obtener los parámetros de la URL
+  function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return 'hola mundo';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+  }
 
+  // Obtener el valor y el código de la URL
+  var valor = getParameterByName('valor');
+  var cod = getParameterByName('cod');
 
-
+  // Verificar si el código está presente y mostrarlo
+  //if (cod) {
+  //  document.write(cod);
+  //}
+</script>
 
