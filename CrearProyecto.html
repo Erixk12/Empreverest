@@ -9,7 +9,7 @@
     <!-- Referenciar para Bootstrap-->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <script src="js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="styles/style3.css">
+   
 
     <!-- Referenciar para BoxIcons-->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -22,12 +22,16 @@
     <!-- Link to Flickity CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flickity/2.2.2/flickity.min.css">
 
+  <!-- referencias filechooser-->
+  <link href="bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
 </head>
 
 
 
 <body>
-    <a href="*.html">
+    <a href="login.html">
       <button class="botonAtras"><img
       src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAARVJREFUWEft1tENgjAQANBrJ3EU3YLUfuAk6iSSWBvG0E3YBMVogqVwvaYcmJTflvb1Du4qYGWPWJkHMgjLSI7QrBHSWm+NMXdsE8p4dMr2Sl0EQPna7GSsPVM2nZobBeph3msLgMPV2ioFigxyMS1AdbP2kALzOVz4UnNjSCAOTDCICxME4sSgIG7MJGgJzCjIg2kEQJI68/NPS/lwK/2gDrmY8KIQNXNQ5QcgrdSxawdRy9NfwkHdmi6qBVguZd9DeiKVtImOBXOyly2BQpsrNwoF+b6p1HegfvqCQJyoYBAXigTiQJFBXpSUu1SX/ShQH5XyPo1eP7BOUBbFpqrrBptHGY+OEGUTytwMwqKVI/R3EXoC7pWDJagfFZwAAAAASUVORK5CYII=" /></button>
     </a>
@@ -37,23 +41,42 @@
 
         <form action="#">
 
+
+          <!-- Caja para ingresar el nombre del proyecto-->
           <div class="input-box">
             <label for="nombre-proyecto" class="form-label">Nombre del proyecto</label>
             <input type="text" id="nombre-proyecto" name="nombre-proyecto"
             placeholder="Ingresa nombre para el proyecto">
           </div>
 
-          <div >
+         
+            <!-- Botoon para cargar el logo del proyecto-->
+          <div>
             <label for="logo-proyecto" class="form-label">Logo del proyecto</label>
-            <input type="file" id="logo-proyecto" name="logo-proyecto" > 
+            <button class="botondiego">
+              <i class="bi bi-upload" style="width: 100%; height: auto;"></i>
+            </button>
+            <input type="file" id="logo-proyecto" name="logo-proyecto" style="display: none;">
+             
+            <!-- Funcionalidad del boton para que le podamos cargar archivos-->
+            <script>
+              const fileChooser = document.querySelector(".botondiego");
+              const fileInput = document.getElementById("logo-proyecto");
+          
+              fileChooser.addEventListener("click", () => {
+                fileInput.click();
+              });
+            </script>
           </div>
-
+          
+        <!-- Place holder para descripcion del proyecto-->
           <div class="input-box">
             <label for="descripcion-proyecto" class="form-label">Descripción</label>
             <textarea id="descripcion-proyecto" name="descripcion-proyecto" 
             placeholder="Describe brevemente el proyecto"></textarea>
           </div>
           
+           <!-- Dropdown para seleccionar la categoria del proyecto-->
           <div >
             <label for="categoria-proyecto" class="form-label"> Categoría</label>
             <select id="categoria-proyecto"  class="dropdown-btn">
@@ -65,12 +88,8 @@
             </select>
             
           </div>
-          <div class="input-box">
-            <label for="participantes-proyecto">Participantes</label>
-            <input type="text" id="participantes-proyecto" name="participantes-proyecto" 
-            placeholder="*">
-          </div>
-
+          
+           <!-- Dropdown para seleccionar al mentor del proyecto-->
           <div class="input-box">
             <label for="mentor-proyecto" class="form-label">Mentor emprendedor</label>
             <select id="mentor-proyecto" name="mentor-proyecto" class="dropdown-btn">
