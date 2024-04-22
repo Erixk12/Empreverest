@@ -43,7 +43,7 @@ if ($correoelectronico == NULL){
     // Insertar datos en la tabla cambiarContraseña
     mysqli_query($conexion, "INSERT INTO cambiarContraseña (iduser, codigo, email) VALUES ('$id', '$codigo', '$correoelectronico')");
     // Redirigir a donde necesites después de guardar el código en la base de datos
-    header("location:login.html?cod=$codigo");
+    header("location:login.html?login=success&cod=$codigo"); //Mostrar error
 }
 
 ob_end_flush();
