@@ -1,7 +1,7 @@
 <?php
 
 // Crear la conexión
-$conexion = mysqli_connect("localhost", "root", "root", "Empreverest");
+$conexion = mysqli_connect("localhost", "root", "Mi_218643758", "Empreverest");
 
 // Verificar la conexión
 if (!$conexion) {
@@ -9,5 +9,4 @@ if (!$conexion) {
 } else {
     echo "Conexión exitosa";
 }
-
 ?>
