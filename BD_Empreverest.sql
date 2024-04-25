@@ -1,4 +1,4 @@
-create database empreverest;
+# create database empreverest;
 use empreverest;
 
 create table Usuarios (
@@ -12,9 +12,14 @@ create table Usuarios (
     fecha date, 
     estado boolean);
     
-drop table Usuarios;
-describe Usuarios;
-
+create table cambiarContraseña (
+	idsolcon int primary key auto_increment not null, 
+	iduser int, 
+    codigo varchar(10),
+    email varchar(50));
+    
+drop table cambiarContraseña;
+    
 INSERT INTO Usuarios (correoelectronico, contraseña, nombre) VALUES
 ("isaac@gmail.com", SHA1("isaac123"), "isaac"),
 ("pedro@gmail.com", SHA1("pedro123"), "pedro"),
@@ -22,4 +27,7 @@ INSERT INTO Usuarios (correoelectronico, contraseña, nombre) VALUES
 ("diego@gmail.com", SHA1("diego123"), "diego"),
 ("jorge@gmail.com", SHA1("jorge123"), "jorge");
 
+INSERT INTO cambiarContraseña (iduser, codigo, email) VALUES (2, '1a2b3c4d5e', 'pedro@gmail.com');
+
 select * from Usuarios;
+select * from cambiarContraseña
