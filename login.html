@@ -108,7 +108,7 @@
               </div>
               -->
               <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="email" name="email" placeholder="Correo electrónico">
+                <input type="email" class="form-control" id="email" name="email" placeholder="Correo electrónico" required>
                 <label for="floatingInput" class="gray-text">Ingrese su correo electrónico</label>
               </div>
           </div>
@@ -134,19 +134,20 @@
       <div class="modal-body">
         <!-- Formulario para actualizar contraseña -->
         <form id="form-actualizarContraseña" action="cambiarContraseña.php" method="post">
-          <label for="newPassword" class="form-label" style="margin-bottom: 20px;">Código</label>
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="codigo" name="codigo" placeholder="Código">
-            <label for="floatingInput" class="gray-text">Ingrese el código</label>
-          </div>
           <label for="newPassword" class="form-label" style="margin-bottom: 20px;">Nueva Contraseña</label>
           <div class="form-floating" style="margin-bottom: 15px;">
-            <input type="password" class="form-control gray-text" id="cambiarContraseña" name="cambiarContraseña" placeholder="Password">
+            <input type="password" class="form-control gray-text" id="cambiarContraseña" name="cambiarContraseña" placeholder="Password" required>
             <label for="floatingPassword1" class="gray-text">Ingrese su nueva contraseña</label>
           </div>
           <div class="form-floating" style="margin-bottom: 20px;">
-            <input type="password" class="form-control gray-text" id="confirmarContraseña" name="confirmarContraseña"  placeholder="Password">
+            <input type="password" class="form-control gray-text" id="confirmarContraseña" name="confirmarContraseña"  placeholder="Password" required>
             <label for="floatingPassword2" class="gray-text">Confirme su contraseña</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label gray-text" for="flexCheckDefault" style="margin-bottom: 20px;">
+              Mostrar contraseñas
+            </label>
           </div>
           <div class="text-end">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cancelarCambioContraseña">Cancelar</button>
@@ -157,6 +158,9 @@
     </div>
   </div>
 </div>
+
+<!-- Mensaje de error al usuario -->
+<div id="errorEmail" class="error-message" style="display: none;">Correo electrónico no existente</div>
 
 <!-- Toast para mostrar error -->
 <div class="toast fixed-top position-absolute bg-danger" style="position: absolute; top: 15px; left: 50%; transform: translateX(-50%);" id="loginToast" role="alert" aria-live="assertive" aria-atomic="true">
@@ -187,6 +191,24 @@
     <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
   </div>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      const cambiarContraseñaInput = document.getElementById('cambiarContraseña');
+      const confirmarContraseñaInput = document.getElementById('confirmarContraseña');
+      const mostrarContraseñasCheckbox = document.getElementById('flexCheckDefault');
+
+      mostrarContraseñasCheckbox.addEventListener('change', function() {
+          if (this.checked) {
+              cambiarContraseñaInput.type = 'text';
+              confirmarContraseñaInput.type = 'text';
+          } else {
+              cambiarContraseñaInput.type = 'password';
+              confirmarContraseñaInput.type = 'password';
+          }
+      });
+  });
+</script>
 
 <!-- Alternar iconos para mostrar y esconder la contraseña-->
 <script>
@@ -264,16 +286,16 @@
   }
 
   // Mostrar el toast correspondiente según el parámetro de cambio de contraseña
-  if (loginStatus === 'fail' && errorType === 'empty_email') {
+  if (loginStatus === 'fail' && errorType === 'empty_email') { //Validar si el correo electronico esta vacio o el login es fallido 
     // El correo electrónico no existe
     document.querySelector('.toast-body').innerText = 'Correo electronico invalido';
     showToast(); //Mostrat el toast
     mostrarModal(); //Mostrar el modal en ciclo 
-  } else if (loginStatus === 'success') {
+  } else if (loginStatus === 'success') { //Inicio de sesion exitoso
     document.querySelector('.toast-body').innerText = 'Correo electronico existente';
     cambioContraseñaToast();
     cambioContraseñaModal();  
-  }
+  } 
 
   if (loginStatus === 'fail' && errorType === 'wrong_passwords') {
     document.querySelector('.toast-body').innerText = 'Las contraseñas no son iguales';
