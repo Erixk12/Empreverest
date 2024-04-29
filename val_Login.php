@@ -1,6 +1,6 @@
 <?php
 // Establecer la conexión con la base de datos
-$conexion = new mysqli("localhost", "root", "Mi_218643758", "Empreverest");
+$conexion = new mysqli("localhost", "root", "12345678", "empreverest");
 
 // Verificar la conexión
 if ($conexion->connect_error) {

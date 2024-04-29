@@ -2,8 +2,9 @@
 
 /*Aplicar a todos los elementos*/
 * {
-    margin: 0;
-    padding: 0;
+    margin: 0; /*Un margen para la pantalla del usuario, bordes externos*/
+    /*border: 0; Un espacio dentro del margen*/
+    padding: 0; /*Dentro del borde*/
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
 }
@@ -11,24 +12,29 @@
 /*Aplicar al cuerpo de la página*/
 body {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     min-height: 100vh;
     overflow: hidden;
+    background: linear-gradient(to bottom, #FFFFFF, #0B6380);
+    background-size: auto 100%;
+    background-position: calc(100% - -200px) center; /* Mover la imagen 20 píxeles hacia la derecha */
+    background-repeat: no-repeat;
     background-attachment: fixed;
 }
 
 .fullbox {
-    height: 650px;
-    width: 80%;
-    background: rgba(255, 255, 255, 0.93);
+    height: 100vh;
+    width: 800px;
+    border: 2px solid rgba(255, 255, 255);
+    background: rgba(255, 255, 255);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .3);
     color: #333;
     padding: 30px 40px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    align-items: center;
-    justify-content: center;
+    display: flex;
+    flex-direction: column; /* Alinear los elementos verticalmente */
+    align-items: center; /* Alinear los elementos horizontalmente */
+    justify-content: flex-end; 
 }
 
 .fullbox .form-label {
@@ -39,43 +45,50 @@ body {
     color: #333;
 }
 
+/*Aplicar estilo al titulo principal (Iniciar sesion)*/
 .fullbox h1 {
-    font-size: 36px;
-    text-align: center;
+    font-size: 36px; /*Asignar tamaño del titulo*/
+    text-align: center; /*Centrar texto*/
     font-weight: 600;
-    grid-column: span 2;
 }
 
+/*Aplicar estilo a las cajas de insertar correo electronico y contraseña*/
 .fullbox .input-box {
     position: relative;
-    width: 100%;
-    height: 50px;
-    margin: 30px 0px;
+    width: 100%; /*Ancho*/
+    height: 50px; /*Alto*/ 
+    margin: 20px 0px; /* Altura desde el centro (px), Anchura desde el centro (px) */
     margin-bottom: 50px;
 }
 
+/*Modificar el texto dentro de la cajas*/
 .input-box input {
-    width: 100%;
-    height: 100%;
+    width: 100%; /*Ancho*/
+    height: 100%; /*Alto*/ 
     background: transparent;
     outline: none;
     border: 2px solid rgba(255, 255, 255, .2);
     background: rgba(78, 171, 224, 0.26);
-    border-radius: 10px;
+    border-radius: 10px; /*Redondear*/ 
     font-size: 16px;
     color: #0B6380;
     padding: 20px 45px 20px 20px;
 }
 
+/*Aplicar color al placeholder / Contenido o texto  dentro de las cajas*/ 
 .input-box input::placeholder {
     color: #0B6380;
 }
 
-.input-box {
-    position: relative;
-    width: 100%;
-    height: 50px;
-    margin-bottom: 50px;
+.input-box i {
+    position: absolute;
+    right: 20px;
+    top:110%;
+    transform: translateY(-50%);
+    font-size: 20px; /*Agrandar iconos*/
+
+    /* Absoulta: No afectan a otros elementos que este cercas, pueden sobreponerse
+       Relativa: Afecta el flujo de otros elementos cerca*/
 }
 
 .fullbox .olvidarContraseña {
@@ -86,29 +99,32 @@ body {
     margin: -10px 0px 20px;
 }
 
+/*Decoración para el texto*/
 .olvidarContraseña a {
     color: #333;
     text-decoration: none;
 }
 
+/*Decoración para que parezca un link (que se esconda)*/
 .olvidarContraseña a:hover {
     text-decoration: underline;
 }
 
+/*Decoración para el boton de iniciar sesion*/
 .fullbox .botonIniciarSesion {
     width: 100%;
-    height: 52px;
+    height: 50px;
     background: #0B6380;
     border: none;
     outline: none;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, .3);
     cursor: pointer;
-    font-size: 20px;
+    font-size: 16px;
     color: #fff;
     font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    cursor: pointer;    
+    transition: background-color 0.3s ease; /* Transición suave para el cambio de color de fondo */
     margin-top: 20px;
 }
 
@@ -118,17 +134,13 @@ body {
     background: #e9e9e9ab;
     border: none;
     outline: none;
-    font-size: 80%;
+    font-size: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, .3);
     cursor: pointer;
     margin-top: 20px;
-    transition: background-color 0.3s ease;
-    white-space: nowrap;   
-}
-.fullbox .botonGoogle img {
-    max-height: 100%; /* Hacer la imagen más responsiva */
-    margin-right: 10px; /* Agregar un espacio entre la imagen y el texto */
+    margin-bottom: 50px;
+    transition: background-color 0.3s ease; /* Transición suave para el cambio de color de fondo */
 }
 
 .botonAtras {
@@ -139,23 +151,42 @@ body {
     outline: none;
     border-radius: 10px;
     cursor: pointer;
-    margin-top: 20px;
-    margin-left: 20px;
+    margin-top: 30px;
+    margin-left: 0px;
+    transition: background-color 0.3s ease;
     position: fixed;
     top: 0;
     left: 0;
 }
 
 .botonIniciarSesion:hover {
-    background-color: #3A92C1;
+    background-color: #3A92C1; /* Color degradado al pasar el mouse */
 }
 
 .botonGoogle:hover {
-    background-color: #ffffff;
+    background-color: #ffffff; /* Color degradado al pasar el mouse */
+}
+.botonAtras:hover {
+    background-color: #ffffff; /* Color degradado al pasar el mouse */
 }
 
-.botonAtras:hover {
-    background-color: #ffffff;
+/*Estilo para el texto de registrarse*/ 
+.fullbox .registrarse {
+    font-size: 16px;
+    text-align: center;
+    margin-top: 20px;
+    color: #333;
+}
+
+/*Decoración para el texto*/
+.registrarse p a {
+    color: #333;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.registrarse a:hover {
+    text-decoration: underline;
 }
 
 /* Estilo para el dropdown */

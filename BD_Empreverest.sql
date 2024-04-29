@@ -1,16 +1,25 @@
-# create database empreverest;
+create database empreverest;
 use empreverest;
 
 create table Usuarios (
 	id int primary key auto_increment not null, 
 	correoelectronico varchar(30), 
     contraseña varchar(100), 
-    nombre varchar(30), 
+    estado boolean,
+    fecha datetime, 
+    codigo varchar(10));
+    
+create table personas(
+	idpeople int primary key auto_increment not null, 
+    iduser int, 
+	nombre varchar(30), 
     apellido varchar(30),
     genero varchar(10),
-    tipocuenta varchar(10),
-    fecha date, 
-    estado boolean);
+    tipocuenta enum('Mentor', 'Estudiante', 'Admin'),
+    codigo_alumno varchar(9),
+    centro enum('CUALTOS', 'CUCEA'),
+    FOREIGN KEY (iduser) REFERENCES Usuarios(id)
+    );    
     
 create table cambiarContraseña (
 	idsolcon int primary key auto_increment not null, 
@@ -20,14 +29,16 @@ create table cambiarContraseña (
     
 drop table cambiarContraseña;
     
-INSERT INTO Usuarios (correoelectronico, contraseña, nombre) VALUES
-("isaac@gmail.com", SHA1("isaac123"), "isaac"),
-("pedro@gmail.com", SHA1("pedro123"), "pedro"),
-("erick@gmail.com", SHA1("erick123"), "erick"),
-("diego@gmail.com", SHA1("diego123"), "diego"),
-("jorge@gmail.com", SHA1("jorge123"), "jorge");
+INSERT INTO Usuarios (correoelectronico, contraseña) VALUES
+("isaac@gmail.com", SHA1("isaac123")),
+("pedro@gmail.com", SHA1("pedro123")),
+("erick@gmail.com", SHA1("erick123")),
+("diego@gmail.com", SHA1("diego123")),
+("jorge@gmail.com", SHA1("jorge123"));
 
-INSERT INTO cambiarContraseña (iduser, codigo, email) VALUES (2, '1a2b3c4d5e', 'pedro@gmail.com');
 
 select * from Usuarios;
-select * from cambiarContraseña
+select * from personas;
+select * from cambiarContraseña;
+drop table personas;
+drop table Usuarios;

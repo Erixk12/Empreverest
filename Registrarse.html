@@ -7,7 +7,7 @@
     <!-- Referenciar para Bootstrap-->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <script src="js/bootstrap.bundle.min.js"></script>
-    <link rel = "stylesheet" href="styles/style2.css">
+    <link rel="stylesheet" href="styles/style2.css">
 
     <!-- Referenciar para BoxIcons-->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -20,30 +20,42 @@
 </head>
 <body>
     <a href="index.html">
-        <button class="botonAtras"><img
+        <button class="botonAtras"> .<img alt="Back"
         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAARVJREFUWEft1tENgjAQANBrJ3EU3YLUfuAk6iSSWBvG0E3YBMVogqVwvaYcmJTflvb1Du4qYGWPWJkHMgjLSI7QrBHSWm+NMXdsE8p4dMr2Sl0EQPna7GSsPVM2nZobBeph3msLgMPV2ioFigxyMS1AdbP2kALzOVz4UnNjSCAOTDCICxME4sSgIG7MJGgJzCjIg2kEQJI68/NPS/lwK/2gDrmY8KIQNXNQ5QcgrdSxawdRy9NfwkHdmi6qBVguZd9DeiKVtImOBXOyly2BQpsrNwoF+b6p1HegfvqCQJyoYBAXigTiQJFBXpSUu1SX/ShQH5XyPo1eP7BOUBbFpqrrBptHGY+OEGUTytwMwqKVI/R3EXoC7pWDJagfFZwAAAAASUVORK5CYII=" /></button>
     </a>
-    <div class="fullbox">
-        <h1>Registrarse</h1>
-
-        <!-- Columna 1 -->
-        <div>
+    <div class="fullbox">        
+        
+        <!-- Formulario -->
+        
+        <form action="registrarUsuario.php" method="post">            
+            <h1>Registrarse</h1>
             <!-- Campo Nombre -->
             <div class="input-box">
                 <label for="nombre" class="form-label">Nombre</label>
-                <input type="text" id="nombre" placeholder="Nombre">
+                <input type="text" id="nombre" name="nombre" placeholder="Nombre">
             </div>
 
             <!-- Campo Apellidos -->
             <div class="input-box">
                 <label for="apellidos" class="form-label">Apellidos</label>
-                <input type="text" id="apellidos" placeholder="Apellidos">
+                <input type="text" id="apellidos" name="apellidos" placeholder="Apellidos">
             </div>
 
+            <!-- Dropdown Género -->
+            <div class="input-box">
+                <label for="genero" class="form-label">Género</label>
+                <select id="genero" name="genero" class="dropdown-btn">
+                    <option value="" disabled selected>Seleccionar Género</option>
+                    <option value="masculino">Masculino</option>
+                    <option value="femenino">Femenino</option>
+                    <option value="otro">Otro</option>
+                </select>
+            </div>  
+            
             <!-- Dropdown Centro Universitario -->
             <div class="input-box">
                 <label for="centroUniversitario" class="form-label">Centro Universitario</label>
-                <select id="centroUniversitario" class="dropdown-btn">
+                <select id="centroUniversitario" name="centroUniversitario" class="dropdown-btn">
                     <option value="" disabled selected>Seleccionar Centro Universitario</option>
                     <option value="centro1">CUALTOS</option>
                     <option value="centro2">CUCEA</option>
@@ -53,52 +65,51 @@
             <!-- Código de Alumno -->
             <div class="input-box">
                 <label for="codigoAlumno" class="form-label">Código de Alumno</label>
-                <input type="text" id="codigoAlumno" placeholder="Código de Alumno">
+                <input type="text" id="codigoAlumno" name="codigoAlumno" placeholder="Código de Alumno">
             </div>
-
-            <!-- Registrarse con Google -->
-            <button class="botonGoogle"> <img src="src-ico/google.png" alt="">Registrarse con Google</button>
-        </div>
-
-        <!-- Columna 2 -->
-        <div>
-            <!-- Campo Correo Electrónico -->
-            <div class="input-box">
-                <label for="email" class="form-label">Correo Electrónico</label>
-                <input type="email" id="email" placeholder="Correo Electrónico">
-            </div>
-
-            <!-- Campo Contraseña -->
-            <div class="input-box">
-                <label for="password" class="form-label">Contraseña</label>
-                <input type="password" id="password" placeholder="Contraseña">
-            </div>            
-
-            <!-- Dropdown Género -->
-            <div class="input-box">
-                <label for="genero" class="form-label">Género</label>
-                <select id="genero" class="dropdown-btn">
-                    <option value="" disabled selected>Seleccionar Género</option>
-                    <option value="masculino">Masculino</option>
-                    <option value="femenino">Femenino</option>
-                    <option value="otro">Otro</option>
-                </select>
-            </div>  
 
             <!-- Dropdown Tipo de Cuenta -->
             <div class="input-box">
                 <label for="tipoCuenta" class="form-label">Tipo de Cuenta</label>
-                <select id="tipoCuenta" class="dropdown-btn">
+                <select id="tipoCuenta" name="tipoCuenta" class="dropdown-btn">
                     <option value="" disabled selected>Seleccionar tipo de cuenta</option>
                     <option value="estudiante">Estudiante</option>
                     <option value="maestro">Maestro</option>
                 </select>
             </div>
+            
+            <input type="hidden" name="codigo" value="<?php echo $codigo; ?>">
 
             <!-- Botón de Registrarse -->
             <button type="submit" class="botonIniciarSesion" data-toggle="modal" data-target="#exampleModalCenter">Registrarse</button>
-        </div>
+        
+            <!-- Registrarse con Google -->
+            <button class="botonGoogle" aria-label="Iniciar sesión con Google">
+                <img src="src-ico/google.png" alt="">
+            </button>            
+        
+        </form>
+            
+        
+        
     </div>
     
 </body>
+
+<script>
+    // Función para obtener los parámetros de la URL
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+  
+    // Obtener el código de la URL y asignarlo al campo oculto
+    var codigo = getParameterByName('codigo');
+    document.getElementById('codigo').value = codigo;
+</script>
+
 </html>
