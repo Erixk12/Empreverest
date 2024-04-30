@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 // Verifica si se ha enviado el formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Crear la conexión
@@ -14,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Obtiene los datos del formulario
     $correoElectronico = $_POST['email'];
     $contrasena = sha1($_POST['password']);
-    $estado = false; // Hasta que el usuario no complete los demas datos no se pondra true
+    $estado = true; // Hasta que el usuario no complete los demas datos no se pondra true
     $fecha = date("Y-m-d H:i:s"); // Obtiene la fecha y hora actual
     
     $permited_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';

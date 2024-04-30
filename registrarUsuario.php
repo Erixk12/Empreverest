@@ -1,4 +1,5 @@
 <?php
+session_start();
 // Verifica si se ha enviado el formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Crear la conexión
@@ -18,9 +19,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $centroUniversitario = $_POST['centroUniversitario'];
     $codigoAlumno = $_POST['codigoAlumno'];
     $tipoCuenta = $_POST['tipoCuenta'];
-    session_start();
+
+    // Obtiene el código almacenado en la sesión
     $codigo = $_SESSION['codigo'];
-    session_destroy();
 
     // Evitar inyección SQL utilizando consultas preparadas
     $query = "SELECT id FROM Usuarios WHERE codigo = ?";
