@@ -46,4 +46,46 @@
     </div>
     
 </body>
+
+<div class="toast position-fixed top-0 end-0 mt-3 me-3" role="alert" aria-live="assertive" aria-atomic="true" id="loginToast">
+    <div class="toast-header">
+      <img src="src-ico/empreverest.svg" class="rounded me-2" alt="Empreverest">
+      <strong class="me-auto">Error al registrar</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      Hello, world! This is a toast message.
+    </div>
+</div>
+
+
+
+<script>
+    // Obtener los parámetros de la URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const errorType = urlParams.get('error');
+    const registrationStatus = urlParams.get('registration');
+    
+    // Mostrar el toast correspondiente según el parámetro de error
+    if (registrationStatus === 'fail') {
+        const toastEl = document.getElementById('loginToast');
+        const toast = new bootstrap.Toast(toastEl);
+        
+        if (errorType === 'insecure_password') {
+            // Contraseña insegura
+            document.querySelector('.toast-body').innerText = 'La contraseña debe tener al menos 8 caracteres';
+            toast.show();
+        } else if (errorType === 'existing_email') {
+            // Usuario no registrado
+            document.querySelector('.toast-body').innerText = 'El email ingresado ya está asociado a otra cuenta';
+            toast.show();
+        } else if (errorType === 'invalid_email') {
+            // Usuario no registrado
+            document.querySelector('.toast-body').innerText = 'El email debe pertenecer a la UDG';
+            toast.show();
+        } 
+    }
+</script>
+
+
 </html>

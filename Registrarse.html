@@ -46,9 +46,9 @@
                 <label for="genero" class="form-label">Género</label>
                 <select id="genero" name="genero" class="dropdown-btn">
                     <option value="" disabled selected>Seleccionar Género</option>
-                    <option value="masculino">Masculino</option>
-                    <option value="femenino">Femenino</option>
-                    <option value="otro">Otro</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Femenino">Femenino</option>
+                    <option value="Otro">Otro</option>
                 </select>
             </div>  
             
@@ -57,15 +57,15 @@
                 <label for="centroUniversitario" class="form-label">Centro Universitario</label>
                 <select id="centroUniversitario" name="centroUniversitario" class="dropdown-btn">
                     <option value="" disabled selected>Seleccionar Centro Universitario</option>
-                    <option value="centro1">CUALTOS</option>
-                    <option value="centro2">CUCEA</option>
+                    <option value="CUALTOS">CUALTOS</option>
+                    <option value="CUCEA">CUCEA</option>
                 </select>
             </div>
 
             <!-- Código de Alumno -->
             <div class="input-box">
                 <label for="codigoAlumno" class="form-label">Código de Alumno</label>
-                <input type="text" id="codigoAlumno" name="codigoAlumno" placeholder="Código de Alumno">
+                <input type="text" id="codigoAlumno" name="codigoAlumno" placeholder="Código de Alumno" >
             </div>
 
             <!-- Dropdown Tipo de Cuenta -->
@@ -73,8 +73,8 @@
                 <label for="tipoCuenta" class="form-label">Tipo de Cuenta</label>
                 <select id="tipoCuenta" name="tipoCuenta" class="dropdown-btn">
                     <option value="" disabled selected>Seleccionar tipo de cuenta</option>
-                    <option value="estudiante">Estudiante</option>
-                    <option value="maestro">Maestro</option>
+                    <option value="Estudiante">Estudiante</option>
+                    <option value="Maestro">Maestro</option>
                 </select>
             </div>
             
@@ -110,6 +110,50 @@
     // Obtener el código de la URL y asignarlo al campo oculto
     var codigo = getParameterByName('codigo');
     document.getElementById('codigo').value = codigo;
+</script>
+
+<div class="toast position-fixed top-0 end-0 mt-3 me-3" role="alert" aria-live="assertive" aria-atomic="true" id="loginToast">
+    <div class="toast-header">
+      <img src="src-ico/empreverest.svg" class="rounded me-2" alt="Empreverest">
+      <strong class="me-auto">Error al registrar</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      Hello, world! This is a toast message.
+    </div>
+</div>
+
+
+
+<script>
+    // Obtener los parámetros de la URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const errorType = urlParams.get('error');
+    const registrationStatus = urlParams.get('registration');
+    
+    // Mostrar el toast correspondiente según el parámetro de error
+    if (registrationStatus === 'fail') {
+        const toastEl = document.getElementById('loginToast');
+        const toast = new bootstrap.Toast(toastEl);
+        
+        if (errorType === 'invalid_name_or_lastname') {
+            // Contraseña insegura
+            document.querySelector('.toast-body').innerText = 'El nombre solo puede contener letras y espacios';
+            toast.show();
+        } else if (errorType === 'short_name') {
+            // Usuario no registrado
+            document.querySelector('.toast-body').innerText = 'El nombre y el apellido deben ser mayor a 3 letras';
+            toast.show();
+        } else if (errorType === 'existing_studentcode') {
+            // Usuario no registrado
+            document.querySelector('.toast-body').innerText = 'El código de alumno ingresado ya está asociado a otra cuenta';
+            toast.show();
+        } else if (errorType === 'invalid_student_code') {
+            // Usuario no registrado
+            document.querySelector('.toast-body').innerText = 'El código de alumno debe contener exactamente 9 números';
+            toast.show();
+        } 
+    }
 </script>
 
 </html>
