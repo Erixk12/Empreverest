@@ -1,0 +1,123 @@
+<!-- Interfaz para ingresar la nueva contraseña de la cuenta-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empreverest</title>
+
+    <!-- Referencias para archivos locales-->
+    <link rel="stylesheet" href="styles/style_password.css">
+    <link rel="stylesheet" href="src-ico/empreverest.svg">
+
+    <!-- Referencia para Bootstrap-->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+    <!-- Referencia para BoxIcons-->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- Referencia para AwesomeFont-->
+    <link href="/your-path-to-fontawesome/css/fontawesome.css" rel="stylesheet">
+    <link href="/your-path-to-fontawesome/css/brands.css" rel="stylesheet">
+    <link href="/your-path-to-fontawesome/css/solid.css" rel="stylesheet">
+
+    <!-- Favicon-->
+    <link rel="icon" href="src-ico/empreverest.svg" type="image/x-icon">
+
+    <!-- Referencia para la API de Google-->
+    <script src="https://www.google.com/recaptcha/api.js?render=6LeriJspAAAAAD_UGlSansdlmb6cKYvYWku9dRuG"></script>
+</head>
+
+<body>
+
+    <!-- Icono para regresar a la pagina principal-->
+    <div class="contenedor">
+        <a href="index.html" class="etiqueta">
+            <button class="botonAtras" type="button">
+                <img src="src-ico/empreverest.svg" alt="Empreverest">
+            </button>
+        </a>
+    </div>
+
+    <div class="fullbox">
+
+        <form id="form-cambioContraseña" action="val_email.php" method="post">
+
+            <!-- Titulo principal-->
+            <h1>Restablecer contraseña</h1>
+
+            <div class="texto">
+                <p>Ingrese su correo electrónico a continuación y le enviaremos instrucciones para restablecer su
+                    contraseña</p>
+            </div>
+
+            <!-- Caja para ingresar el correo electronico-->
+            <div class="input-box">
+                <label for="exampleFormControlInput1" class="form-label">Correo electrónico</label>
+                <input type="email" class="form-control" id="email" name="email"
+                    placeholder="Correo electrónico" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\.udg\.mx$" required>
+                <i class='bx bx-user'></i>
+            </div>
+
+            <!--Boton para iniciar sesion-->
+            <button type="submit" id="entrar" class="botonEnviarCodigo">Envíar código</button>
+
+            <!--Volver al login en caso de que el usuario lo desee-->
+            <div class="login">
+                <p>¿Recordaste tu contraseña? <a href="login.html">Inicia sesión</a> </p>
+            </div>
+
+        </form> 
+    </div>
+
+    <!--Icono y título parte derecha-->
+    <div class="contenedorCentrado" style="text-align: center;">
+        <div style="display: inline-block;"> <!-- Div para centrar contenido -->
+            <img src="src-ico/empreverest.svg" style="width: 300px; margin-bottom: -30px;" alt="Empreverest">
+            <span style="display: block;">EMPREVEREST</span>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+<!-- Toast | Mensajes para el usuario-->
+<div role="alert" id="passwordToast" aria-live="assertive" aria-atomic="true" class="toast" data-bs-autohide="true">
+    <div class="toast-header">
+        <img src="src-ico/empreverest.svg" class="rounded me-2" alt="Empreverest">
+        <strong class="me-auto">Error de correo electrónico</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+        Mensaje al usuario
+    </div>
+</div>
+
+<script>
+    // Obtener los parámetros de la URL
+    const urlParams = new URLSearchParams(window.location.search); //Buscar la URL actual 
+    const loginStatus = urlParams.get('login');
+    const errorType = urlParams.get('error');
+
+    // Función para mostrar el toast de error
+    function showToast() {
+        const toastEl = document.getElementById('passwordToast');
+        const toast = new bootstrap.Toast(toastEl);
+        toast.show();
+    }
+
+    // Mostrar el toast correspondiente según el parámetro de cambio de contraseña
+    if (loginStatus === 'fail' && errorType === 'empty_email') { //Validar si el correo electronico esta vacio o el login es fallido 
+        // El correo electrónico no existe
+        document.querySelector('.toast-body').innerText = 'Correo electrónico no encontrado';
+        showToast(); //Mostrat el toast
+    } else if (loginStatus === 'success') { //Inicio de sesion exitoso
+        document.querySelector('.toast-body').innerText = 'Correo electronico existente';
+        showToast();
+    }
+
+</script>
