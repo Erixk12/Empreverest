@@ -1,4 +1,3 @@
-
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 /*Aplicar a todos los elementos*/
@@ -17,24 +16,61 @@ body {
     align-items: center;
     min-height: 100vh;
     overflow: hidden;
-    background-image: url('https://cdn.computerhoy.com/sites/navi.axelspringer.es/public/media/image/2020/12/china-nepal-llegan-acuerdo-fin-sabemos-altura-exacta-everest-2163191.jpg?tf=3840x');
+    background: linear-gradient(to bottom, #FFFFFF, #0B6380);
     background-size: auto 100%;
-    background-position: calc(100% - -200px) center; /* Mover la imagen 20 píxeles hacia la derecha */
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
 
 .fullbox {
     height: 100vh;
-    width: 600px;
+    width: 60%;
     border: 2px solid rgba(255, 255, 255);
     background: rgba(255, 255, 255);
     box-shadow: 0 0 10px rgba(0, 0, 0, .3);
     color: #333;
-    padding: 30px 40px;
+    padding: 0 70px; /* Ajuste del padding */
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    align-items: center; /* Centra verticalmente */
+    justify-content: center; /* Centra horizontalmente */
+}
+
+/* Toast */
+#loginToast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999; /* Asegura que el toast esté por encima de otros elementos */
+    background-color: #e9e9e9ab;
+    color: #000000;
+  }
+
+#passwordToast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999; /* Asegura que el toast esté por encima de otros elementos */
+    background-color: #e9e9e9ab;
+    color: #000000;
+  }
+
+  /* Icono para volver al menu principal */
+  .etiqueta {
+    position: fixed;
+    top: 2vh; /* Ajusta este valor según sea necesario */
+    left: 2vw; /* Ajusta este valor según sea necesario */
+  }
+
+.contenedor {
+  position: relative;
+}
+
+.contenedorCentrado {
+    height: 50vh;
+    width: 100vh;
+    font-size: 60px; /*Asignar tamaño del titulo*/
+    font-weight: 750;
+    color: #FFFFFF;
 }
 
 .fullbox .form-label {
@@ -47,15 +83,16 @@ body {
 
 /*Aplicar estilo al titulo principal (Iniciar sesion)*/
 .fullbox h1 {
-    font-size: 36px; /*Asignar tamaño del titulo*/
-    text-align: center; /*Centrar texto*/
-    font-weight: 600;
+    position: relative;
+    font-size: 38px; /*Asignar tamaño del titulo*/
+    text-align: left; /*Centrar texto*/
+    font-weight: 700;
 }
 
 /*Aplicar estilo a las cajas de insertar correo electronico y contraseña*/
 .fullbox .input-box {
     position: relative;
-    width: 100%; /*Ancho*/
+    width: 420px; /*Ancho*/
     height: 50px; /*Alto*/ 
     margin: 30px 0px; /* Altura desde el centro (px), Anchura desde el centro (px) */
     margin-bottom: 50px;
@@ -96,7 +133,7 @@ body {
     display: flex;
     justify-content: space-between;
     font-size: 13px;
-    margin: -10px 0px 20px;
+    margin: -10px 0px 30px;
 }
 
 /*Decoración para el texto*/
@@ -112,8 +149,8 @@ body {
 
 /*Decoración para el boton de iniciar sesion*/
 .fullbox .botonIniciarSesion {
-    width: 500px;
-    height: 45px;
+    width: 100%;
+    height: 50px;
     background: #0B6380;
     border: none;
     outline: none;
@@ -123,6 +160,7 @@ body {
     font-size: 16px;
     color: #fff;
     font-weight: 600;
+    margin-bottom: 15px;
     cursor: pointer;    
     transition: background-color 0.3s ease; /* Transición suave para el cambio de color de fondo */
 }
@@ -133,12 +171,18 @@ body {
     background: #e9e9e9ab;
     border: none;
     outline: none;
-    font-size: 20px;
+    font-size: 13px;
+    font-weight: 350;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, .3);
     cursor: pointer;
     margin-top: 20px;
     transition: background-color 0.3s ease; /* Transición suave para el cambio de color de fondo */
+}
+
+.logo {
+    display: flex;
+    align-items: center;
 }
 
 .botonAtras {
@@ -149,12 +193,8 @@ body {
     outline: none;
     border-radius: 10px;
     cursor: pointer;
-    margin-top: 30px;
-    margin-left: 0px;
     transition: background-color 0.3s ease;
-    position: fixed;
-    top: 0;
-    left: 0;
+    position: relative;
 }
 
 .botonIniciarSesion:hover {
@@ -165,24 +205,69 @@ body {
     background-color: #ffffff; /* Color degradado al pasar el mouse */
 }
 .botonAtras:hover {
-    background-color: #ffffff; /* Color degradado al pasar el mouse */
+    background-color: #8fc6d8; /* Color degradado al pasar el mouse */
 }
 
 /*Estilo para el texto de registrarse*/ 
-.fullbox .registrarse {
-    font-size: 16px;
-    text-align: center;
-    margin-top: 20px;
+.fullbox .registrarse { 
+    margin-top: 15px;  
+    font-size: 13px;
+    text-align: right;
     color: #333;
 }
 
 /*Decoración para el texto*/
 .registrarse p a {
+    font-size: 13px;
+    color: #0B6380;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.fullbox .texto {
+    width: 90%;
+    margin-top: 15px;  
+    font-size: 20px;
+    text-align: left;
     color: #333;
+}
+
+.texto .p {
+    font-size: 13px;
+    color: #0B6380;
     text-decoration: none;
     font-weight: 600;
 }
 
 .registrarse a:hover {
     text-decoration: underline;
+}
+
+@media only screen and (max-width: 600px) {
+    /* Estilos específicos para dispositivos pequeños */
+    .fullbox {
+        width: 90%; /* Reducir el ancho del contenedor principal */
+        padding: 10px; /* Ajustar el relleno */
+    }
+    /* Añadir más estilos específicos para dispositivos pequeños según sea necesario */
+}
+
+/* Media Queries para dispositivos de tamaño mediano (tabletas) */
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+    /* Estilos específicos para dispositivos medianos */
+    .fullbox {
+        width: 70%; /* Reducir el ancho del contenedor principal */
+        padding: 20px; /* Ajustar el relleno */
+    }
+    /* Añadir más estilos específicos para dispositivos medianos según sea necesario */
+}
+
+/* Media Queries para dispositivos de tamaño grande (escritorios) */
+@media only screen and (min-width: 1025px) {
+    /* Estilos específicos para dispositivos grandes */
+    .fullbox {
+        width: 60%; /* Reducir el ancho del contenedor principal */
+        padding: 30px; /* Ajustar el relleno */
+    }
+    /* Añadir más estilos específicos para dispositivos grandes según sea necesario */
 }
