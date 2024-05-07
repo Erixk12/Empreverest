@@ -18,10 +18,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Empreverest</title>
 
+    <!-- Referencias para archivos locales-->
+    <link rel = "stylesheet" href="styles/style_login.css">
+    <link rel = "stylesheet" href="src-ico/empreverest.svg">
+
     <!-- Referencia para Bootstrap-->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <script src="js/bootstrap.bundle.min.js"></script>
-    <link rel = "stylesheet" href="styles/style.css">
 
     <!-- Referencia para BoxIcons-->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -31,190 +34,112 @@
     <link href="/your-path-to-fontawesome/css/brands.css" rel="stylesheet">
     <link href="/your-path-to-fontawesome/css/solid.css" rel="stylesheet">
 
+    <!-- Favicon-->
+    <link rel="icon" href="src-ico/empreverest.svg" type="image/x-icon">
+
     <!-- Referencia para la API de Google-->
     <script src="https://www.google.com/recaptcha/api.js?render=6LeriJspAAAAAD_UGlSansdlmb6cKYvYWku9dRuG"></script>
   </head>
 
 <body>
 
-  <div class="fullbox">
-    <!-- Flecha para regresar a la página principal (landing page)-->
-    <a href="index.html"> 
-      <button class="botonAtras" aria-label="atras"><img alt="Icono"src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAARVJREFUWEft1tENgjAQANBrJ3EU3YLUfuAk6iSSWBvG0E3YBMVogqVwvaYcmJTflvb1Du4qYGWPWJkHMgjLSI7QrBHSWm+NMXdsE8p4dMr2Sl0EQPna7GSsPVM2nZobBeph3msLgMPV2ioFigxyMS1AdbP2kALzOVz4UnNjSCAOTDCICxME4sSgIG7MJGgJzCjIg2kEQJI68/NPS/lwK/2gDrmY8KIQNXNQ5QcgrdSxawdRy9NfwkHdmi6qBVguZd9DeiKVtImOBXOyly2BQpsrNwoF+b6p1HegfvqCQJyoYBAXigTiQJFBXpSUu1SX/ShQH5XyPo1eP7BOUBbFpqrrBptHGY+OEGUTytwMwqKVI/R3EXoC7pWDJagfFZwAAAAASUVORK5CYII="/></button>
+  <!-- Icono para regresar a la pagina principal-->
+  <div class="contenedor">
+    <a href="index.html" class="etiqueta">
+      <button class="botonAtras" type="button">
+        <img src="src-ico/empreverest.svg" alt="Empreverest">
+      </button>
     </a>
+  </div>
+
+  <div class="fullbox">
 
     <!-- Formulario para la interfaz de inicio de sesión
       - Ingresar un correo electrónico  
       - Validar si el correo electrónico se encuentra en la base de datos 
       - Ingresar una contraseña
       - Validar si la contraseña coincide-->
-    <form id="form-login" action="val_Login.php" method="post">
+    <form id="form-login" action="val_login.php" method="post">
+      
+      <!-- Titulo principal-->
       <h1>Iniciar Sesión</h1>
       
       <!-- Caja para ingresar el correo electronico-->
       <div class="input-box">
         <label for="exampleFormControlInput1" class="form-label">Correo electrónico</label>
-        <input type="email" class="form-control" id="exampleFormControlInput1" name="correoelectronico" placeholder="Correo electrónico" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\.udg\.mx$" required>        
+        <input type="email" class="form-control" id="correoelectronico" name="correoelectronico" placeholder="Correo electrónico" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\.udg\.mx$" required>        
         <i class='bx bx-user'></i>
       </div>
 
       <!-- Caja para ingresar la contraseña-->
       <div class="input-box">
         <label for="inputPassword5" class="form-label">Contraseña</label>
-        <input type="password" id="inputPassword5" class="form-control" name="contraseña" aria-describedby="passwordHelpBlock" placeholder="Contraseña" required> 
+        <input type="password" id="contraseña" class="form-control" name="contraseña" aria-describedby="passwordHelpBlock" placeholder="Contraseña" required> 
         <div id="passwordHelpBlock" class="form-text"></div>
         <i id="togglePassword" class='bx bx-lock-alt'></i> 
       </div>
 
       <!-- Link en caso de que el usuario halla olvidado la contraseña-->
       <div class="olvidarContraseña">
-        <label>
-          <a id="olvidarContraseña">¿Olvidaste tu contraseña?</a>
-        </label>
+          <a href="email.html">¿Olvidaste tu contraseña?</a>
       </div>
 
       <!--Boton para iniciar sesion-->
       <button type="submit" id="entrar" class="botonIniciarSesion">Iniciar Sesión</button>
+      
+      <hr> <!--Colocar linea -->
 
-      <!--link para registrarse-->
+      <!--Boton para iniciar sesion con Google-->
+      <button class="botonGoogle" button type="button"> <img src="src-ico/google.png" style="width: 30px; margin-right: 10px;">
+        Iniciar sesión con Google
+      </button>
+
       <div class="registrarse">
         <p>¿No tienes una cuenta? <a href="Registrarse.html">Regístrate</a> </p>
       </div>
 
-      <!--Boton para iniciar sesion con Google-->
-      <button class="botonGoogle" button type="button" aria-label="Boton"> <img src="src-ico/google.png" alt="Google"></box-icon></button>
-
     </form> <!--Fin del formulario, ya no se reciben más entradas-->
   </div>
 
-  <!-- Formulario para el modal de cambio de contraseña
-      - Ingresar un correo electrónico existente
-        - Devolver un error si el correo no existe en la base de datos
-        - Entrar a un modal si el correo es valido -->
-  <form id="form-cambiarcontraseña" action="val_correoElectronico.php" method="post">
-    <!-- Modal para cambiar la contraseña -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog d-flex align-items-center justify-content-center">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Recuperación de contraseña</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-              <!-- Modal original - Se mantiene por si el modal no funciona en las pruebas 
-              <div class="mb-3">
-                <label for="email" class="form-label">Ingrese su Correo electrónico</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Correo electrónico">
-              </div>
-              -->
-              <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="email" name="email" placeholder="Correo electrónico" required>
-                <label for="floatingInput" class="gray-text">Ingrese su correo electrónico</label>
-              </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-            <button type="submit" class="btn btn-primary" style="background-color: #0B6380 !important;">Enviar código</button>
-          </div>
-        </div>
-      </div>
+  <div class="contenedorCentrado" style="text-align: center;">
+    <div style="display: inline-block;"> <!-- Div para centrar contenido -->
+      <img src="src-ico/empreverest.svg" style="width: 300px; margin-bottom: -30px;" alt="Empreverest">
+      <span style="display: block;">EMPREVEREST</span>
     </div>
-  </form>
+  </div>
+
 </body>
 </html>
 
-<!-- Modal para el cambio de contraseña -->
-<div class="modal fade" id="updatePasswordModal" tabindex="-1" aria-labelledby="updatePasswordModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="updatePasswordModalLabel">Actualizar Contraseña</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <!-- Formulario para actualizar contraseña -->
-        <form id="form-actualizarContraseña" action="cambiarContraseña.php" method="post">
-          <label for="newPassword" class="form-label" style="margin-bottom: 20px;">Nueva Contraseña</label>
-          <div class="form-floating" style="margin-bottom: 15px;">
-            <input type="password" class="form-control gray-text" id="cambiarContraseña" name="cambiarContraseña" placeholder="Password" required>
-            <label for="floatingPassword1" class="gray-text">Ingrese su nueva contraseña</label>
-          </div>
-          <div class="form-floating" style="margin-bottom: 20px;">
-            <input type="password" class="form-control gray-text" id="confirmarContraseña" name="confirmarContraseña"  placeholder="Password" required>
-            <label for="floatingPassword2" class="gray-text">Confirme su contraseña</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-            <label class="form-check-label gray-text" for="flexCheckDefault" style="margin-bottom: 20px;">
-              Mostrar contraseñas
-            </label>
-          </div>
-          <div class="text-end">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cancelarCambioContraseña">Cancelar</button>
-            <button type="submit" class="btn btn-primary" style="background-color: #0B6380 !important;">Actualizar Contraseña</button>
-          </div>   
-        </form>
-      </div>
-    </div>
+<!-- Toast | Mensajes para el usuario en caso de error-->
+<div role="alert" id="loginToast" aria-live="assertive" aria-atomic="true" class="toast" data-bs-autohide="true">
+  <div class="toast-header">
+    <img src="src-ico/empreverest.svg" class="rounded me-2" alt="Empreverest">
+    <strong class="me-auto">Error de inicio de sesion</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+  </div>
+  <div class="toast-body">
+    Mensaje al usuario
   </div>
 </div>
 
-<!-- Mensaje de error al usuario -->
-<div id="errorEmail" class="error-message" style="display: none;">Correo electrónico no existente</div>
-
-<!-- Toast para mostrar error -->
-<div class="toast fixed-top position-absolute bg-danger" style="position: absolute; top: 15px; left: 50%; transform: translateX(-50%);" id="loginToast" role="alert" aria-live="assertive" aria-atomic="true">
-  <div class="d-flex">
-    <div class="toast-body text-white">  
-      Este es el toast para mostrar errores
-    </div>
-    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+<!-- Toast | Mensajes para el usuario en caso de cambio de contraseña-->
+<div role="alert" id="passwordToast" aria-live="assertive" aria-atomic="true" class="toast" data-bs-autohide="true">
+  <div class="toast-header">
+    <img src="src-ico/empreverest.svg" class="rounded me-2" alt="Empreverest">
+    <strong class="me-auto">Cambio de contraseña</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+  </div>
+  <div class="toast-body">
+    La contraseña fue actualizada correctamente
   </div>
 </div>
-
-<!-- Toast de confirmación-->
-<div class="toast fixed-top position-absolute bg-success" style="position: absolute; top: 15px; left: 50%; transform: translateX(-50%);" id="AffirmativeToast" role="alert" aria-live="assertive" aria-atomic="true">
-  <div class="d-flex">
-    <div class="toast-body text-white">  
-      Correo electrónico válido
-    </div>
-    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-  </div>
-</div>
-
-<!-- Toast de confirmación-->
-<div class="toast fixed-top position-absolute bg-success" style="position: absolute; top: 15px; left: 50%; transform: translateX(-50%);" id="confirmarContraseñaCambiada" role="alert" aria-live="assertive" aria-atomic="true">
-  <div class="d-flex">
-    <div class="toast-body text-white">  
-      Contraseña actualizada
-    </div>
-    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-  </div>
-</div>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-      const cambiarContraseñaInput = document.getElementById('cambiarContraseña');
-      const confirmarContraseñaInput = document.getElementById('confirmarContraseña');
-      const mostrarContraseñasCheckbox = document.getElementById('flexCheckDefault');
-
-      mostrarContraseñasCheckbox.addEventListener('change', function() {
-          if (this.checked) {
-              cambiarContraseñaInput.type = 'text';
-              confirmarContraseñaInput.type = 'text';
-          } else {
-              cambiarContraseñaInput.type = 'password';
-              confirmarContraseñaInput.type = 'password';
-          }
-      });
-  });
-</script>
 
 <!-- Alternar iconos para mostrar y esconder la contraseña-->
 <script>
   // Función para alternar entre contraseña visible y oculta
   document.getElementById('togglePassword').addEventListener('click', function() { //Evento al realizar un clic en "TogglePassword (el icono de candado cerrado)"
-    var passwordInput = document.getElementById('inputPassword5'); //Obtener la contraseña
+    var passwordInput = document.getElementById('contraseña'); //Obtener la contraseña
     var toggleIcon = document.getElementById('togglePassword'); //Obtener el icono
 
     if (passwordInput.type === 'password') { //Verificar si el tipo de entrada es de contraseña
@@ -241,82 +166,35 @@
       const toast = new bootstrap.Toast(toastEl);
       toast.show();
   }
-
-  // Función para mostrar el toast de confirmación de cambio de contraseña
-  function cambioContraseñaToast() {
-      const toastEl = document.getElementById('AffirmativeToast');
-      const toast = new bootstrap.Toast(toastEl);
-      toast.show();
+  // Función para mostrar el toast de cambio de contraseña
+  function showpasswordToast() {
+      const toastpassword = document.getElementById('passwordToast');
+      const toastpass = new bootstrap.Toast(toastpassword);
+      toastpass.show();
   }
-
-  function confirmarContraseñaCambiada() {
-      const toastEl = document.getElementById('confirmarContraseñaCambiada');
-      const toast = new bootstrap.Toast(toastEl);
-      toast.show();
-  }
-
-  // Función para mostrar el modal para insertar correo para el cambio de contraseña
-  function mostrarModal() {
-    const modalEl = document.getElementById('exampleModal');
-    const modal = new bootstrap.Modal(modalEl);
-    modal.show();
-  } 
-
-  function cambioContraseñaModal() {
-    const modalEl = document.getElementById('updatePasswordModal');
-    const modal = new bootstrap.Modal(modalEl);
-    modal.show();
-  } 
 
   // Mostrar el toast correspondiente según el parámetro de error
-  if (loginStatus === 'fail') {
-      if (errorType === 'incorrect_password') {
-          // Contraseña incorrecta
+  if (loginStatus === 'fail') { // Contraseña incorrecta
+      if(loginStatus === 'fail' && errorType === 'bad_passwords') { //Validar si la contraseña ingresada contiene caracteres inválidos
+        document.querySelector('.toast-body').innerText = 'La contraseña ingresada contiene caractéres no válidos. Por favor intente de nuevo';
+        showToast(); //Mostrat el toast
+      } else if (errorType === 'incorrect_credentials') {
           document.querySelector('.toast-body').innerText = 'Contraseña o usuario incorrecto';
           showToast();
-      } else if (errorType === 'not_registered') {
-          // Usuario no registrado
+      } else if (errorType === 'short_password') { // Usuario no registrado
+          document.querySelector('.toast-body').innerText = 'La contraseña debe de tener al menos 8 caracteres';
+          showToast();
+      } else if (errorType === 'not_registered') { // Usuario no registrado
           document.querySelector('.toast-body').innerText = 'El usuario no está registrado';
           showToast();
-      } else if (errorType === 'invalid_email') {
-          // Correo electrónico inválido
-          document.querySelector('.toast-body').innerText = 'El correo electrónico no es válido';
+      } else if (errorType === 'invalid_email') { // Correo electrónico inválido
+          document.querySelector('.toast-body').innerText = 'El correo electrónico ingresado no es válido';
           showToast();
       }
+  } else if(loginStatus === 'password_updated') { //Validar si se hizo un cambio de contraseña
+    document.querySelector('.toast-body').innerText = 'La contraseña fue actualizada correctamente';
+    showpasswordToast();
   }
-
-  // Mostrar el toast correspondiente según el parámetro de cambio de contraseña
-  if (loginStatus === 'fail' && errorType === 'empty_email') { //Validar si el correo electronico esta vacio o el login es fallido 
-    // El correo electrónico no existe
-    document.querySelector('.toast-body').innerText = 'Correo electronico invalido';
-    showToast(); //Mostrat el toast
-    mostrarModal(); //Mostrar el modal en ciclo 
-  } else if (loginStatus === 'success') { //Inicio de sesion exitoso
-    document.querySelector('.toast-body').innerText = 'Correo electronico existente';
-    cambioContraseñaToast();
-    cambioContraseñaModal();  
-  } 
-
-  if (loginStatus === 'fail' && errorType === 'wrong_passwords') {
-    document.querySelector('.toast-body').innerText = 'Las contraseñas no son iguales';
-    showToast(); //Mostrat el toast
-    cambioContraseñaModal();
-  }
-  else if(loginStatus === 'fail' && errorType === 'same_passwords') {
-    document.querySelector('.toast-body').innerText = 'La contraseña ingresa ya existe';
-    showToast(); //Mostrat el toast
-    cambioContraseñaModal();
-  }
-  else if(loginStatus === 'password_updated') { 
-    document.querySelector('.toast-body').innerText = 'Contraseña actualizada correctamente';
-    confirmarContraseñaCambiada();
-  }
-
-  //Evento para cuando el boton de cancelar sea presionado, redirija el link correcto sin el codigo
-  document.getElementById("cancelarCambioContraseña").addEventListener("click", function() {
-      // Redirigir a la página deseada
-      window.location.href = "login.html"; //Devolver URL sin el codigo 
-  });
 </script>
 
 <script>
@@ -333,49 +211,3 @@
 
   });
 </script>
-
-<script>
-  // Capturamos el enlace "¿Olvidaste tu contraseña?" por su ID
-  const olvidarContraseñaLink = document.getElementById('olvidarContraseña');
-
-  // Capturamos el modal por su ID
-  const modal = document.getElementById('exampleModal');
-
-  // Añadimos un evento de clic al enlace
-  olvidarContraseñaLink.addEventListener('click', function(event) {
-    // Prevenimos el comportamiento predeterminado del enlace
-    event.preventDefault();
-    // Mostramos el modal utilizando Bootstrap Modal
-    var myModal = new bootstrap.Modal(modal);
-    myModal.show();
-  });
-</script>
-
-<script>
-  // Función para obtener los parámetros de la URL
-  function getParameterByName(name, url) {
-    if (!url) url = window.location.href;
-    name = name.replace(/[\[\]]/g, "\\$&");
-    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-        results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return 'hola mundo';
-    return decodeURIComponent(results[2].replace(/\+/g, " "));
-  }
-
-  // Obtener el valor y el código de la URL
-  var valor = getParameterByName('valor');
-  var cod = getParameterByName('cod');
-
-  // Verificar si el código está presente y mostrarlo
-  //if (cod) {
-  //  document.write(cod);
-  //}
-</script>
-
-<style>
-  .gray-text {
-    color: #6c757d; /* Color grisáceo */
-  }
-</style>
-
