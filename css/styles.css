@@ -108,10 +108,7 @@
   transition: background-color 0.3s ease; /* Transición suave para el cambio de color de fondo */
 }
 
-.card {
-  border-radius: 50px; /* Bordes redondeados */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
-}
+
 
 
 @media (prefers-reduced-motion: no-preference) {

@@ -1,91 +1,161 @@
+<!-- Interfaz para el inicio de sesión-->
+<!--Paleta de colores utilizada en la interfaz 
+        Texto dentro de los botones - 
+        botones - #4EABE0 26% opacidad 
+        Letra de botones - #818798
+        botones de confirmacion - #0B6380
+        Fondo - 
+
+    Tipo de Letra
+        Letra para titulos - Poppins Bold 60
+        letra para textos - Poppins regular 30 -->
+    
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Empreverest</title>
-    <!-- Referenciar para Bootstrap-->
+
+    <!-- Referencias para archivos locales-->
+    <link rel = "stylesheet" href="styles/style_login.css">
+    <link rel = "stylesheet" href="src-ico/empreverest.svg">
+
+    <!-- Referencia para Bootstrap-->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <script src="js/bootstrap.bundle.min.js"></script>
-    <link rel = "stylesheet" href="styles/style.css">
 
-    <!-- Referenciar para BoxIcons-->
+    <!-- Referencia para BoxIcons-->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-
-    <!-- Referenciar para AwesomeFont-->
+    <!-- Referencia para AwesomeFont-->
     <link href="/your-path-to-fontawesome/css/fontawesome.css" rel="stylesheet">
     <link href="/your-path-to-fontawesome/css/brands.css" rel="stylesheet">
     <link href="/your-path-to-fontawesome/css/solid.css" rel="stylesheet">
-</head>
-<body>
-    <a href="index.html">
-        <button class="botonAtras"> .<img alt="Back"
-        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAARVJREFUWEft1tENgjAQANBrJ3EU3YLUfuAk6iSSWBvG0E3YBMVogqVwvaYcmJTflvb1Du4qYGWPWJkHMgjLSI7QrBHSWm+NMXdsE8p4dMr2Sl0EQPna7GSsPVM2nZobBeph3msLgMPV2ioFigxyMS1AdbP2kALzOVz4UnNjSCAOTDCICxME4sSgIG7MJGgJzCjIg2kEQJI68/NPS/lwK/2gDrmY8KIQNXNQ5QcgrdSxawdRy9NfwkHdmi6qBVguZd9DeiKVtImOBXOyly2BQpsrNwoF+b6p1HegfvqCQJyoYBAXigTiQJFBXpSUu1SX/ShQH5XyPo1eP7BOUBbFpqrrBptHGY+OEGUTytwMwqKVI/R3EXoC7pWDJagfFZwAAAAASUVORK5CYII=" /></button>
-    </a>
-    <div class="fullbox">
-        
-        <form action="altaUsuario.php" method="post">
-            <h1>Registrarse</h1>
-            <!-- Campo Correo Electrónico -->
-            <div class="input-box">
-                <label for="email" class="form-label">Correo Electrónico</label>
-                <input type="email" id="email" name="email" placeholder="Correo Electrónico">
-            </div>
 
-            <!-- Campo Contraseña -->
-            <div class="input-box">
-                <label for="password" class="form-label">Contraseña</label>
-                <input type="password" id="password" name="password" placeholder="Contraseña">
-            </div>  
-  
-            <!-- Botón de Registrarse -->
-        <button type="submit" name="siguiente" class="botonIniciarSesion" data-toggle="modal" data-target="#exampleModalCenter">Siguiente</button>
-       
-        </form>        
-    </div>
+    <!-- Favicon-->
+    <link rel="icon" href="src-ico/empreverest.svg" type="image/x-icon">
+
+    <!-- Referencia para la API de Google-->
+    <script src="https://www.google.com/recaptcha/api.js?render=6LeriJspAAAAAD_UGlSansdlmb6cKYvYWku9dRuG"></script>
+  </head>
+
+<body>
+
+  <!-- Icono para regresar a la pagina principal-->
+  <div class="contenedor">
+    <a href="index.html" class="etiqueta">
+      <button class="botonAtras" type="button">
+        <img src="src-ico/empreverest.svg" alt="Empreverest">
+      </button>
+    </a>
+  </div>
+
+  <div class="fullbox">
+    <form action="altaUsuario.php" method="post">
+      <h1>Registrarse</h1>
+      <!-- Campo Correo Electrónico -->
+      <div class="input-box">
+          <label for="email" class="form-label">Correo Electrónico</label>
+          <input type="email" id="email" name="email" placeholder="Correo Electrónico">
+      </div>
+
+      <!-- Campo Contraseña -->
+      <div class="input-box">
+          <label for="password" class="form-label">Contraseña</label>
+          <input type="password" id="password" name="password" placeholder="Contraseña">
+      </div>  
+
+      <!-- Botón de Registrarse -->
+  <button type="submit" name="siguiente" class="botonIniciarSesion" data-toggle="modal" data-target="#exampleModalCenter">Siguiente</button>
     
+  </div>
+
+  <div class="contenedorCentrado" style="text-align: center;">
+    <div style="display: inline-block;"> <!-- Div para centrar contenido -->
+      <img src="src-ico/empreverest.svg" style="width: 300px; margin-bottom: -30px;" alt="Empreverest">
+      <span style="display: block;">EMPREVEREST</span>
+    </div>
+  </div>
+
 </body>
+</html>
+
+
+
+
+
+<!-- Alternar iconos para mostrar y esconder la contraseña-->
+<script>
+  // Función para alternar entre contraseña visible y oculta
+  document.getElementById('togglePassword').addEventListener('click', function() { //Evento al realizar un clic en "TogglePassword (el icono de candado cerrado)"
+    var passwordInput = document.getElementById('contraseña'); //Obtener la contraseña
+    var toggleIcon = document.getElementById('togglePassword'); //Obtener el icono
+
+    if (passwordInput.type === 'password') { //Verificar si el tipo de entrada es de contraseña
+      passwordInput.type = 'text'; //Convertir el tipo de entrada a texto
+      toggleIcon.classList.remove('bx-lock-alt'); //Quitar el icono con candado cerrado
+      toggleIcon.classList.add('bx-lock-open-alt'); //Colocar el icono con candado abierto 
+    } else { //Entonces el tipo de entrada no es de contraseña
+      passwordInput.type = 'password'; //Convertir el tipo de entrada a contraseña
+      toggleIcon.classList.remove('bx-lock-open-alt'); //Quitar el icono con candado cerrado
+      toggleIcon.classList.add('bx-lock-alt'); //Colocar el icono con candado abierto 
+    }
+  });
+</script>
 
 <div class="toast position-fixed top-0 end-0 mt-3 me-3" role="alert" aria-live="assertive" aria-atomic="true" id="loginToast">
-    <div class="toast-header">
-      <img src="src-ico/empreverest.svg" class="rounded me-2" alt="Empreverest">
-      <strong class="me-auto">Error al registrar</strong>
-      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-    </div>
-    <div class="toast-body">
-      Hello, world! This is a toast message.
-    </div>
+  <div class="toast-header">
+    <img src="src-ico/empreverest.svg" class="rounded me-2" alt="Empreverest">
+    <strong class="me-auto">Error al registrar</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+  </div>
+  <div class="toast-body">
+    Hello, world! This is a toast message.
+  </div>
 </div>
 
 
 
 <script>
-    // Obtener los parámetros de la URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const errorType = urlParams.get('error');
-    const registrationStatus = urlParams.get('registration');
-    
-    // Mostrar el toast correspondiente según el parámetro de error
-    if (registrationStatus === 'fail') {
-        const toastEl = document.getElementById('loginToast');
-        const toast = new bootstrap.Toast(toastEl);
-        
-        if (errorType === 'insecure_password') {
-            // Contraseña insegura
-            document.querySelector('.toast-body').innerText = 'La contraseña debe tener al menos 8 caracteres';
-            toast.show();
-        } else if (errorType === 'existing_email') {
-            // Usuario no registrado
-            document.querySelector('.toast-body').innerText = 'El email ingresado ya está asociado a otra cuenta';
-            toast.show();
-        } else if (errorType === 'invalid_email') {
-            // Usuario no registrado
-            document.querySelector('.toast-body').innerText = 'El email debe pertenecer a la UDG';
-            toast.show();
-        } 
-    }
+  // Obtener los parámetros de la URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const errorType = urlParams.get('error');
+  const registrationStatus = urlParams.get('registration');
+  
+  // Mostrar el toast correspondiente según el parámetro de error
+  if (registrationStatus === 'fail') {
+      const toastEl = document.getElementById('loginToast');
+      const toast = new bootstrap.Toast(toastEl);
+      
+      if (errorType === 'insecure_password') {
+          // Contraseña insegura
+          document.querySelector('.toast-body').innerText = 'La contraseña debe tener al menos 8 caracteres';
+          toast.show();
+      } else if (errorType === 'existing_email') {
+          // Usuario no registrado
+          document.querySelector('.toast-body').innerText = 'El email ingresado ya está asociado a otra cuenta';
+          toast.show();
+      } else if (errorType === 'invalid_email') {
+          // Usuario no registrado
+          document.querySelector('.toast-body').innerText = 'El email debe pertenecer a la UDG';
+          toast.show();
+      } 
+  }
 </script>
 
+<script>
+  $(document).ready(function() {
+    $('#entrar').click(function(){
+      grecaptcha.ready(function() {
+        grecaptcha.execute('6LeriJspAAAAAD_UGlSansdlmb6cKYvYWku9dRuG', {action: 'validarUsuario'}).then(function(token) {
+          $('#form-login').prepend('<input type="hidden" name="token" value="' + token + '">');
+          $('#form-login').prepend('<input type="hidden" name="action" value="validarUsuario">');
+          $('#form-login').submit();
+        });
+      });
+    });
 
-</html>
+  });
+</script>
