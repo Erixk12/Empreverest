@@ -4,6 +4,24 @@ session_start();
 include("conexion.php");
 //$codigo = $_GET['cod']; // Obtener el código de la URL
 
+function insertarRegistro($conexion, $idUsuario, $correoelectronico, $accion, $ip, $navegador, $estado, $descripcion) {
+    // Obtener la fecha y hora actual
+    date_default_timezone_set('America/Mexico_City'); 
+    $fecha = date('Y-m-d H:i:s');
+    
+    // Insertar el registro en la tabla de registros
+    $sql = "INSERT INTO registro (iduser, usuario, fecha, accion, ip, navegador, estado, descripcion) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    $stmt = $conexion->prepare($sql);
+    $stmt->bind_param("isssssss", $idUsuario, $correoelectronico, $fecha, $accion, $ip, $navegador, $estado, $descripcion);
+    if ($stmt->execute()) {
+        return true;
+    } else {
+        echo "Error: " . $sql . "<br>" . $stmt->error;
+        return false;
+    }
+}
+
+
 if (isset($_SESSION['codigo'])) { //Obtener el codigo de una sesión iniciada en el script "val_correoElectronico"
     $codigo = $_SESSION['codigo']; // Obtener el código de la sesión
 
@@ -13,6 +31,7 @@ if (isset($_SESSION['codigo'])) { //Obtener el codigo de una sesión iniciada en
     while($fila = mysqli_fetch_array($consulta)){ //Encontrar variables de la tabla 
         $id = $fila['iduser']; //Obtener el ID del usuario del codigo ingresado 
         $codigoBD = $fila['codigo'];
+        $correoelectronico = $fila['email'];
     }
 
     if (!empty($_POST["cambiarContraseña"]) && !empty($_POST["confirmarContraseña"])) { // Verificar si las nuevas contraseñas no están vacías
@@ -110,8 +129,22 @@ if (isset($_SESSION['codigo'])) { //Obtener el codigo de una sesión iniciada en
 
                 if ($resultado) { //La contraseña se actualizo con exito
                     // La consulta se ejecutó con éxito
-                    header("location: login.html?login=password_updated");
-                    exit();
+                    $ip = $_SERVER['REMOTE_ADDR'];
+                    $navegador = $_SERVER['HTTP_USER_AGENT'];
+                    $accion = 'Cambio de contraseña';
+                    $estado = 'Exitoso';
+                    $descripcion = '-';
+
+                    // Insertar el registro en la tabla de registros
+                    if (insertarRegistro($conexion, $id, $correoelectronico, $accion, $ip, $navegador, $estado, $descripcion)) {
+                        // Redirigir al usuario a alguna página de error o mostrar un mensaje adecuado
+                        header("location: login.html?login=password_updated");
+                        exit();
+                    } else {
+                        echo "Error: " . $sql . "<br>" . mysqli_error($conexion);
+                        exit(); // Detiene la ejecución del script
+                    }                    
+
                 } else { //Surgio un problema para actualizar la base de datos 
                     // Hubo un error al ejecutar la consulta, capturarlo y manejarlo adecuadamente
                     $error = mysqli_error($conexion);
@@ -125,9 +158,9 @@ if (isset($_SESSION['codigo'])) { //Obtener el codigo de una sesión iniciada en
     } else {
         header("location: passwords.html?&login=fail&error=wrong_passwords&cod=$codigoBD");
     }
-} else { //Entonces el codigo no esta en el URL
-    header("location: login.html?login=fail&cod=not_found"); //Mostrar error
-}
+} else { //Entonces el codigo no esta en el URL    
+    header("location: login.html?login=fail&cod=not_found"); //Mostrar error    
+}   
 
 ob_end_flush();
 ?>
