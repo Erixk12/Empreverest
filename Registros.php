@@ -163,7 +163,30 @@ if ($result->num_rows > 0) {
                 </tr>
             </thead>
             <tbody>
-            //Aqui va la info de la tabla del registro Diego
+            
+
+            <?php
+            $sql="SELECT * from registro";
+            $result=mysqli_query($conexion,$sql);
+            
+            while($mostrar = mysqli_fetch_array($result)){
+            ?>       
+
+            <tr>
+                
+                <td><?php echo $mostrar['usuario'] ?></td>
+                <td><?php echo $mostrar['fecha']  ?></td>
+                <td><?php echo $mostrar['accion']  ?></td>
+                <td><?php echo $mostrar['descripcion'] ?> </td>
+                <td><?php echo $mostrar['ip'] ?> </td>
+                <td><?php echo $mostrar['navegador'] ?> </td>
+                <td><?php echo $mostrar['estado'] ?> </td>
+            </tr>
+
+            
+            <?php
+            }
+            ?>
             </tbody>
         </table>
                 </div>                      

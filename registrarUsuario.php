@@ -3,7 +3,7 @@ session_start();
 // Verifica si se ha enviado el formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Crear la conexión
-    $conexion = mysqli_connect("localhost", "root", "12345678", "empreverest");
+    $conexion = mysqli_connect("localhost", "root", "chivas123", "empreverest");
 
     // Verificar la conexión
     if (!$conexion) {
