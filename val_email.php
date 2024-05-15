@@ -1,3 +1,4 @@
+val_email.php
 <?php
 ob_start();
 session_start(); //Iniciar una sesión
@@ -27,6 +28,7 @@ if ($correoelectronico === '') { // Verificar si el correo electrónico está va
     // Solicitud fallida: correo electronico vacio
     $ip = $_SERVER['REMOTE_ADDR'];
     $navegador = $_SERVER['HTTP_USER_AGENT'];
+    $navegador = substr($navegador, 0, 50);
     $accion = 'Envío de petición cambio de contraseña';
     $estado = 'Fallido';
     $descripcion = 'Correo electrónico vacío';
@@ -51,6 +53,7 @@ if (mysqli_num_rows($consulta) == 0) { // Validar si existe un correo en la base
     // Solicitud fallida: no existe correo en la base de datos
     $ip = $_SERVER['REMOTE_ADDR'];
     $navegador = $_SERVER['HTTP_USER_AGENT'];
+    $navegador = substr($navegador, 0, 50);
     $accion = 'Envío de petición cambio de contraseña';
     $estado = 'Fallido';
     $descripcion = 'No existe correo electrónico en la base de datos';
@@ -80,6 +83,7 @@ if ($correoelectronico == NULL){ // Validar si el correo electronico es diferent
     // Solicitud fallida: correo electronico vacio
     $ip = $_SERVER['REMOTE_ADDR'];
     $navegador = $_SERVER['HTTP_USER_AGENT'];
+    $navegador = substr($navegador, 0, 50);
     $accion = 'Envío de petición cambio de contraseña';
     $estado = 'Fallido';
     $descripcion = 'No existe correo electrónico en la base de datos o vacío';
@@ -105,6 +109,7 @@ if ($correoelectronico == NULL){ // Validar si el correo electronico es diferent
     //Solicitud exitosa
     $ip = $_SERVER['REMOTE_ADDR'];
     $navegador = $_SERVER['HTTP_USER_AGENT'];
+    $navegador = substr($navegador, 0, 50);
     $accion = 'Envío de petición cambio de contraseña';
     $estado = 'Exitoso';
     $descripcion = '-';

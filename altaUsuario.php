@@ -1,20 +1,34 @@
+altausuario.php
+
 <?php
+include("conexion.php");
 session_start();
+
+// Función para insertar un registro en la tabla de registros
+function insertarRegistro($conexion, $idUsuario, $correoelectronico, $accion, $ip, $navegador, $estado, $descripcion) {
+    // Obtener la fecha y hora actual
+    date_default_timezone_set('America/Mexico_City'); 
+    $fecha = date('Y-m-d H:i:s');
+    
+    // Insertar el registro en la tabla de registros
+    $sql = "INSERT INTO registro (iduser, usuario, fecha, accion, ip, navegador, estado, descripcion) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    $stmt = $conexion->prepare($sql);
+    $stmt->bind_param("isssssss", $idUsuario, $correoelectronico, $fecha, $accion, $ip, $navegador, $estado, $descripcion);
+    if ($stmt->execute()) {
+        return true;
+    } else {
+        echo "Error: " . $sql . "<br>" . $stmt->error;
+        return false;
+    }
+}
 
 // Verifica si se ha enviado el formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Crear la conexión
-    $conexion = mysqli_connect("localhost", "root", "chivas123", "empreverest");
-
-    // Verificar la conexión
-    if (!$conexion) {
-        die("Error de conexión: " . mysqli_connect_error());
-    } else {
-        //echo "Conexión exitosa";
-    }
+    
 
     // Obtiene los datos del formulario
     $correoElectronico = $_POST['email'];
+    $correoElectronico = strtolower($correoElectronico);
     $contrasena = $_POST['password'];
     $estado = true; // Hasta que el usuario no complete los demas datos no se pondra true
     $fecha = date("Y-m-d H:i:s"); // Obtiene la fecha y hora actual
@@ -52,6 +66,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             echo "Error: " . $sql . "<br>" . mysqli_error($conexion);
         }
+
+        $ip = $_SERVER['REMOTE_ADDR'];
+        $navegador = $_SERVER['HTTP_USER_AGENT'];
+        $navegador = substr($navegador, 0, 50);
+        $accion = 'registro de usuario';
+        $estado = 'Exitoso';
+        $descripcion = $correoElectronico . $contrasena;
+
+        // Insertar el registro en la tabla de registros con el ID de usuario obtenido de la consulta
+        if (insertarRegistro($conexion, $idUsuario, $correoelectronico, $accion, $ip, $navegador, $estado, $descripcion)) {
+            header("Location: login.html?login=fail&error=incorrect_credentials"); // Devolver error
+            exit(); // Detiene la ejecución del script
+        } else {
+            echo "Error: " . $sql . "<br>" . mysqli_error($conexion);
+            exit(); // Detiene la ejecución del script
+        }   
 
     }
 

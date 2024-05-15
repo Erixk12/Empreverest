@@ -1,3 +1,4 @@
+val_login.php
 <?php
 // Establecer la conexión con la base de datos
 include("conexion.php");
@@ -42,6 +43,7 @@ if ($result->num_rows == 0) { // Validar si no existe un correo electrónico en 
     // Datos para la tabla de registro
     $ip = $_SERVER['REMOTE_ADDR'];
     $navegador = $_SERVER['HTTP_USER_AGENT'];
+    $navegador = substr($navegador, 0, 50);
     $accion = 'Inicio de sesión';
     $estado = 'Fallido';
     $descripcion = 'No existe cuenta asociada a este correo electrónico';
@@ -65,6 +67,7 @@ if ($result->num_rows == 0) { // Validar si no existe un correo electrónico en 
         // Datos para la tabla de registro
         $ip = $_SERVER['REMOTE_ADDR'];
         $navegador = $_SERVER['HTTP_USER_AGENT'];
+        $navegador = substr($navegador, 0, 50);
         $accion = 'Inicio de sesión';
         $estado = 'Fallido';
         $descripcion = 'Contraseña menor a 8 caracteres';
@@ -87,6 +90,7 @@ if ($result->num_rows == 0) { // Validar si no existe un correo electrónico en 
         // Datos para la tabla de registro
         $ip = $_SERVER['REMOTE_ADDR'];
         $navegador = $_SERVER['HTTP_USER_AGENT'];
+        $navegador = substr($navegador, 0, 50);
         $accion = 'Inicio de sesión';
         $estado = 'Exitoso';
         $descripcion = '-';
@@ -102,6 +106,7 @@ if ($result->num_rows == 0) { // Validar si no existe un correo electrónico en 
         // Datos para la tabla de registro
         $ip = $_SERVER['REMOTE_ADDR'];
         $navegador = $_SERVER['HTTP_USER_AGENT'];
+        $navegador = substr($navegador, 0, 50);
         $accion = 'Inicio de sesión';
         $estado = 'Fallido';
         $descripcion = 'Contraseña incorrecta';

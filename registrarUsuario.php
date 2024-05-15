@@ -1,16 +1,9 @@
+registrarUsuario.php
 <?php
+include("conexion.php");
 session_start();
 // Verifica si se ha enviado el formulario
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Crear la conexión
-    $conexion = mysqli_connect("localhost", "root", "chivas123", "empreverest");
-
-    // Verificar la conexión
-    if (!$conexion) {
-        die("Error de conexión: " . mysqli_connect_error());
-    } else {
-        echo "Conexión exitosa";
-    }
+if ($_SERVER["REQUEST_METHOD"] == "POST") {    
 
     // Recupera los datos del formulario
     $nombre = $_POST['nombre'];
@@ -33,11 +26,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Consulta para verificar si el usuario ya existe
     $consulta = mysqli_query($conexion, "SELECT * FROM personas WHERE codigo_alumno = '$codigoAlumno'");
 
-    if (!preg_match("/^[a-zA-Z\s]+$/", $nombre) || !preg_match("/^[a-zA-Z\s]+$/", $apellidos)) {
-        // Verificar si el nombre y el apellido contienen solo letras y espacios
+    if (!preg_match("/^[\p{L} \.']+$/u", $nombre) || !preg_match("/^[\p{L} \.']+$/u", $apellidos)) {
+        // Verificar si el nombre y el apellido contienen solo letras, espacios, puntos y comillas, incluyendo la "ñ" y las vocales con acentos
         header("location:Registrarse.html?registration=fail&error=invalid_name_or_lastname&cod=$codigo");
         exit(); // Terminar la ejecución del script después de redirigir
-    }   
+    }
     elseif (strlen($nombre) < 3) {
         // Verificar que el nombre tenga al menos 3 caracteres
         header("location:Registrarse.html?registration=fail&error=short_name&cod=$codigo");
@@ -70,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             mysqli_stmt_bind_param($stmt, "issssss", $iduser, $nombre, $apellidos, $genero, $tipoCuenta, $codigoAlumno, $centroUniversitario);
     
             if (mysqli_stmt_execute($stmt)) {
-                echo "Éxito";
+                header("location:login.html?registration=successful");
             } else {
                 echo "Error al insertar datos: " . mysqli_error($conexion);
             }

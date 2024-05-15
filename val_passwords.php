@@ -1,3 +1,4 @@
+val_passwords.php
 <?php
 ob_start();
 session_start();
@@ -131,6 +132,7 @@ if (isset($_SESSION['codigo'])) { //Obtener el codigo de una sesión iniciada en
                     // La consulta se ejecutó con éxito
                     $ip = $_SERVER['REMOTE_ADDR'];
                     $navegador = $_SERVER['HTTP_USER_AGENT'];
+                    $navegador = substr($navegador, 0, 50);
                     $accion = 'Cambio de contraseña';
                     $estado = 'Exitoso';
                     $descripcion = '-';
