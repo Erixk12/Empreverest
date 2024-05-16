@@ -1,0 +1,18 @@
+/*Aplicar a todos los elementos*/
+* {
+    margin: 0; /*Un margen para la pantalla del usuario, bordes externos*/
+    /*border: 0; Un espacio dentro del margen*/
+    padding: 0; /*Dentro del borde*/
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Toast */
+#loginToast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999; /* Asegura que el toast esté por encima de otros elementos */
+    background-color: #e9e9e9ab;
+    color: #000000;
+  }
