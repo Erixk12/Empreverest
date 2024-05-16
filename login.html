@@ -190,6 +190,9 @@
       } else if (errorType === 'invalid_email') { // Correo electrónico inválido
           document.querySelector('.toast-body').innerText = 'El correo electrónico ingresado no es válido';
           showToast();
+      } else if (errorType === 'disabled_user') { // usuario desactivado
+        document.querySelector('.toast-body').innerText = 'La cuenta está desactivada';
+        showToast();
       }
   } else if(loginStatus === 'password_updated') { //Validar si se hizo un cambio de contraseña
     document.querySelector('.toast-body').innerText = 'La contraseña fue actualizada correctamente';

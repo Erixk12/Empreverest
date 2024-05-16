@@ -25,8 +25,8 @@ function insertarRegistro($conexion, $idUsuario, $correoelectronico, $accion, $i
 $correoelectronico = $_POST["correoelectronico"]; // Obtener el correo electrónico ingresado por el usuario
 $contraseña = $_POST["contraseña"]; // Obtener la contraseña ingresada por el usuario
 
-// Consulta para verificar si el usuario ya existe
-$sql_check_user = "SELECT id, contraseña FROM Usuarios WHERE correoelectronico = ?"; // Usar parámetros para evitar inyección SQL
+// Consulta para verificar si el usuario ya existe y obtener su estado
+$sql_check_user = "SELECT id, contraseña, estado FROM Usuarios WHERE correoelectronico = ?"; // Usar parámetros para evitar inyección SQL
 
 // Sanitizar las entradas, evitar inyecciones SQL
 $stmt = $conexion->prepare($sql_check_user);
@@ -35,7 +35,6 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 if ($result->num_rows == 0) { // Validar si no existe un correo electrónico en la base de datos
-
     
     $idUsuarido = 0;
 
@@ -57,9 +56,20 @@ if ($result->num_rows == 0) { // Validar si no existe un correo electrónico en 
     }
 
 } elseif ($result->num_rows > 0) { // Si la consulta devuelve por lo menos un resultado
+
+
+
     // El usuario está registrado, obtener la contraseña almacenada en la base de datos
     $row = $result->fetch_assoc(); // Guardar el resultado de la consulta en una variable
     $idUsuario = $row['id'];
+    $estado = $row['estado'];
+
+    if($estado == 0){
+        header("Location: login.html?login=fail&error=disabled_user"); // Devolver error
+        exit();
+    }
+    
+    
 
     // Validar la contraseña
     if (strlen($contraseña) < 8) { // Validar si la contraseña tiene por lo menos 8 caracteres
@@ -96,11 +106,30 @@ if ($result->num_rows == 0) { // Validar si no existe un correo electrónico en 
 
         // Insertar el registro en la tabla de registros
         if (insertarRegistro($conexion, $idUsuario, $correoelectronico, $accion, $ip, $navegador, $estado, $descripcion)) {
-            header("Location: Dashboard.html"); // Inicio de sesión exitoso, mandar a Dashboard
-            exit();
+            $sql_checkAccount = "SELECT tipocuenta FROM personas WHERE iduser = ?";
+            // Sanitizar las entradas, evitar inyecciones SQL
+            $stmt_account = $conexion->prepare($sql_checkAccount);
+            $stmt_account->bind_param("i", $idUsuario);
+            $stmt_account->execute();
+            $result_account = $stmt_account->get_result();
+    
+            if ($result_account->num_rows > 0) {
+                // Obtener el tipo de cuenta del usuario
+                $row_account = $result_account->fetch_assoc();
+                $tipo_cuenta = $row_account['tipocuenta'];
+    
+                if($tipo_cuenta == "Administrador"){
+                    header("Location: DashboardAdm.html"); // Inicio de sesión exitoso, mandar a Dashboard
+                    exit();
+                }else{
+                    header("Location: Dashboard.html"); // Inicio de sesión exitoso, mandar a Dashboard
+                    exit();
+                }            
+            }            
         } else {
             exit(); // Detiene la ejecución del script
         }
+
     } else { // Las contraseñas no coinciden
         // Datos para la tabla de registro
         $ip = $_SERVER['REMOTE_ADDR'];

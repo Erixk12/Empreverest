@@ -45,24 +45,18 @@ if ($result->num_rows > 0) {
     <!-- Favicon-->
     <link rel="icon" href="src-ico/empreverest.svg" type="image/x-icon">
 
-
-    <style>
-        .card-img {
-                width: 80%; /* Ajuste del tamaño de la imagen */
-                border-radius: 15px 0 0 15px; /* Bordes redondeados solo en la esquina izquierda */
-            }
-    </style>
 </head>
 <body class="sb-nav-fixed">
 <nav class="sb-topnav navbar navbar-expand navbar-light bg-light">
     <!-- Navbar Brand-->
     <a class="navbar-brand ps-3" href="Dashboard.html"><img src="src-ico/empreverest.svg" alt="Icono">EMPREVEREST</a>
     <!-- Sidebar Toggle-->
-    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars" style="color: #0b6380;"></i></button>
     <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
         <div class="input-group">
             <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-            <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+            <button class="btn btn-primary" id="btnNavbarSearch" type="button" style="background-color: #0b6380; border-color: #0b6380;"><i class="fas fa-search"></i></button>
+
         </div>
     </form>
     <!-- Navbar-->
@@ -79,67 +73,29 @@ if ($result->num_rows > 0) {
     </ul>
 </nav>
 <div id="layoutSidenav">
-    <div id="layoutSidenav_nav">
+<div id="layoutSidenav_nav">
         <nav class="sb-sidenav accordion sb-sidenav-light" id="sidenavAccordion">
             <div class="sb-sidenav-menu">
-                <div class="nav">
+            <div class="nav">
                     <div class="sb-sidenav-menu-heading">Menú</div>
-                    <a class="nav-link" href="Dashboard.html">
-                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    <a class="nav-link" href="DashboardAdm.html">
+                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt" style="color: #0b6380;"></i></div>
                         Dashboard
                     </a>
                     <div class="sb-sidenav-menu-heading">Interface</div>
                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                        Layouts
-                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        <div class="sb-nav-link-icon"><i class="fas fa-table" style="color: #0b6380;"></i></div>
+                        Administración
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down" style="color: #0b6380;"></i></div>
                     </a>
                     <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="layout-static.html">Static Navigation</a>
-                            <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
+                            <a class="nav-link" href="DashboardAdmin.php">Usuarios registrados</a>
+                            <a class="nav-link" href="Registros.php">Tabla de registros</a>
                         </nav>
                     </div>
-                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-                        <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                        Pages
-                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                    </a>
-                    <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                Authentication
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="login.html">Login</a>
-                                    <a class="nav-link" href="register.html">Register</a>
-                                    <a class="nav-link" href="password.html">Forgot Password</a>
-                                </nav>
-                            </div>
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
-                                Error
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="#">Ejemplo 1</a>
-                                    <a class="nav-link" href="#">Ejemplo 2</a>
-                                    <a class="nav-link" href="#">Ejemplo 3</a>
-                                </nav>
-                            </div>
-                        </nav>
-                    </div>
-                    <div class="sb-sidenav-menu-heading">Addons</div>
-                    <a class="nav-link" href="charts.html">
-                        <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                        Charts
-                    </a>
-                    <a class="nav-link" href="tables.html">
-                        <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                        Tables
-                    </a>
+                    
+                                     
                 </div>
             </div>
             <div class="sb-sidenav-footer">
@@ -151,10 +107,20 @@ if ($result->num_rows > 0) {
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid px-4">
-                <h1 class="mt-4">Bienvenido Juan</h1>
-                <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item active">Dashboard</li>
-                </ol>   
+            <div class="row">
+                <div class="col-md-10">
+                    <h1 class="mt-4">Bienvenido</h1>
+                    <ol class="breadcrumb mb-4">
+                        <li class="breadcrumb-item active">Administración de usuarios</li>
+                    </ol> 
+                </div>
+                <div class="col-md-2 d-flex justify-content-end align-items-center">
+                    <button type="button" class="btn btn-danger" style="background-color: #0b6380; border-color: #0b6380;" data-bs-toggle="modal" data-bs-target="#newModal">
+                        <i class="fa-solid fa-user-plus fa-3x" style="color: #ffffff;"></i>
+                    </button>                  
+                </div>
+                <hr>
+            </div>
                 <div class="row">
                     <table id="myTable" class="table align-middle mb-0 bg-white">
                         <thead class="bg-light">
@@ -192,7 +158,7 @@ if ($result->num_rows > 0) {
                                 echo "</td>";
                                 // Agregar columna para las acciones
                                 echo "<td>";
-                                echo "<button type='button' class='btn btn-primary btn-rounded edit-btn' data-bs-toggle='modal' data-bs-target='#editModal' data-mdb-ripple-init>";
+                                echo "<button type='button' class='btn btn-primary btn-rounded edit-btn' style='background-color: #0b6380; border-color: #0b6380;' data-bs-toggle='modal' data-bs-target='#editModal' data-mdb-ripple-init>";
                                 echo "<i class='fa-solid fa-pen-to-square fa-xl' style='color: #ffffff;'></i>";
                                 echo "</button>"; 
                                 if ($usuario['estado'] == 1) {
@@ -208,7 +174,8 @@ if ($result->num_rows > 0) {
                             ?>
                         </tbody>
                     </table>
-                </div>                      
+                </div>     
+                <hr>                
             </div>
             
         </main>
@@ -366,6 +333,95 @@ if ($result->num_rows > 0) {
         </div>
     </div>
 </div>
+
+<!-- Nuevo Modal -->
+<div class="modal fade" id="newModal" tabindex="-1" aria-labelledby="newModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="newModalLabel">Nuevo Usuario</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="newForm" action="newUser.php" method="post">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="correoElectronicoNew" class="form-label">Correo Electrónico</label>
+                                <input type="email" class="form-control" id="correoElectronicoNew" name="correoElectronico" >
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="passwordNew" class="form-label">Contraseña</label>
+                                <input type="password" class="form-control" id="passwordNew" name="password" >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="nombreNew" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="nombreNew" name="nombre">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="apellidosNew" class="form-label">Apellidos</label>
+                                <input type="text" class="form-control" id="apellidosNew" name="apellidos">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="generoNew" class="form-label">Género</label>
+                                <select class="form-select" id="generoNew" name="genero">
+                                    <option value="Masculino">Masculino</option>
+                                    <option value="Femenino">Femenino</option>
+                                    <option value="Otro">Otro</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="codigoAlumnoNew" class="form-label">Código de Alumno</label>
+                                <input type="text" class="form-control" id="codigoAlumnoNew" name="codigoAlumno">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="tipoCuentaNew" class="form-label">Tipo de cuenta</label>
+                                <select class="form-select" id="tipoCuentaNew" name="tipoCuenta">
+                                    <option value="Estudiante">Estudiante</option>
+                                    <option value="Maestro">Maestro</option>
+                                    <option value="Administrador">Administrador</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="centroNew" class="form-label">Centro</label>
+                                <select class="form-select" id="centroNew" name="centro">
+                                    <option value="CUALTOS">CUALTOS</option>
+                                    <option value="CUCEA">CUCEA</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 
 <script>
