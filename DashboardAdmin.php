@@ -38,6 +38,11 @@ if ($result->num_rows > 0) {
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    
+    <!-- Referencias para archivos locales-->
+    <link rel = "stylesheet" href="styles/style_modal.css">
+    <link rel = "stylesheet" href="src-ico/empreverest.svg">
+
     <!-- Referencia para AwesomeFont-->
     <link href="/your-path-to-fontawesome/css/fontawesome.css" rel="stylesheet">
     <link href="/your-path-to-fontawesome/css/brands.css" rel="stylesheet">
@@ -500,3 +505,79 @@ if ($result->num_rows > 0) {
 
 </body>
 </html>
+
+<!-- Toast | Mensajes para el usuario en caso de error-->
+<div role="alert" id="loginToast" aria-live="assertive" aria-atomic="true" class="toast" data-bs-autohide="true">
+  <div class="toast-header">
+    <img src="src-ico/empreverest.svg" class="rounded me-2" alt="Empreverest">
+    <strong class="me-auto">Error de inicio de sesion</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+  </div>
+  <div class="toast-body">
+    Mensaje al usuario
+  </div>
+</div>
+
+<script>
+  // Obtener los parámetros de la URL
+  const urlParams = new URLSearchParams(window.location.search); //Buscar la URL actual 
+  const updateStatus = urlParams.get('update_people');
+  const name = urlParams.get('name'); //Nombre
+  const lastname = urlParams.get('lastnames'); //Apellido
+  const chars = urlParams.get('chars'); //Nombre y apellido 
+  const code = urlParams.get('code'); //Codigo de estudiante 
+
+  const modalEditar = document.getElementById('editModal');
+
+  // Función para mostrar el toast de error
+  function showToast() {
+      const toastEl = document.getElementById('loginToast');
+      const toast = new bootstrap.Toast(toastEl);
+      toast.show();
+  }
+
+  // Mostrar el toast correspondiente según el parámetro de error
+  if (updateStatus === 'fail') { // Contraseña incorrecta
+    if(name === 'bad_entry') {
+        document.querySelector('.toast-body').innerText = 'El nombre contiene caracteres inválidos';
+        showToast();
+    } else if(name === 'bad_entrymin') { //Validar si el nombre tiene caracteres validos
+        document.querySelector('.toast-body').innerText = 'El nombre no contiene con la cantidad mínima requerida de caracteres';
+        showToast();
+        modalEditar.show();
+    } else if(name === 'bad_entrymax') { //Validar la cantidad de caracteres
+        document.querySelector('.toast-body').innerText = 'El nombre contiene demasiados caracteres'; //Mensaje de confirmacion al usuario
+        showToast(); //Mostrar modal 
+    } //Fin de las validaciones para el nombre
+    
+    if (lastname === 'bad_entry') {
+        document.querySelector('.toast-body').innerText = 'El apellido tiene caracteres inválidos'; //Mensaje de confirmacion al usuario
+        showToast(); //Mostrar modal
+    } else if(lastname === 'bad_entrymin') {
+        document.querySelector('.toast-body').innerText = 'El apellido no contiene la cantidad mínima requerida de caracteres'; //Mensaje de confirmacion al usuario
+        showToast(); //Mostrar modal
+    } else if (lastname === 'bad_entrymax') {
+        document.querySelector('.toast-body').innerText = 'El apellido contiene demasiado caracteres'; //Mensaje de confirmacion al usuario
+        showToast(); //Mostrar modal
+    } //Fin de las validaciones para los apellidos 
+    
+    else if (chars === 'bad_entrymin') {
+        document.querySelector('.toast-body').innerText = 'El nombre y el apellido no contienen con la cantidad mínima requerida de caracteres'; //Mensaje de confirmacion al usuario
+        showToast(); //Mostrar modal
+    } else if (chars === 'bad_entrymax') {
+        document.querySelector('.toast-body').innerText = 'Nombre y apellido contienen superan la cantidad máxima de caracteres'; //Mensaje de confirmacion al usuario
+        showToast(); //Mostrar modal
+    } 
+
+    else if(code === 'bad_entry') {
+        document.querySelector('.toast-body').innerText = 'El código no es válido'; //Mensaje de confirmacion al usuario
+        showToast(); //Mostrar modal
+    } else if(code === 'repeated') {
+        document.querySelector('.toast-body').innerText = 'El código de alumno ya está registrado con otra cuenta'; //Mensaje de confirmacion al usuario
+        showToast(); //Mostrar modal
+    } else if(updateStatus === 'success') { //Validar si se hizo un cambio de contraseña
+        document.querySelector('.toast-body').innerText = 'Los datos fueron actualizados correctamente';
+        showToast();
+    }
+}
+</script>
