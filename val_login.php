@@ -1,4 +1,3 @@
-val_login.php
 <?php
 // Establecer la conexión con la base de datos
 include("conexion.php");

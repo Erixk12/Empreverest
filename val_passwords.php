@@ -1,4 +1,3 @@
-val_passwords.php
 <?php
 ob_start();
 session_start();
@@ -135,7 +134,7 @@ if (isset($_SESSION['codigo'])) { //Obtener el codigo de una sesión iniciada en
                     $navegador = substr($navegador, 0, 50);
                     $accion = 'Cambio de contraseña';
                     $estado = 'Exitoso';
-                    $descripcion = '-';
+                    $descripcion = 'Contraseña Actual: ' . $contraseñaActual . " Contraseña Nueva: " . $cambiarContraseñaHash ;
 
                     // Insertar el registro en la tabla de registros
                     if (insertarRegistro($conexion, $id, $correoelectronico, $accion, $ip, $navegador, $estado, $descripcion)) {

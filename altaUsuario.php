@@ -1,5 +1,3 @@
-altausuario.php
-
 <?php
 include("conexion.php");
 session_start();
@@ -57,31 +55,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['codigo'] = $codigo;
     
         // Prepara la consulta SQL para insertar los datos en la tabla Usuarios
-        $sql = "INSERT INTO Usuarios (correoelectronico, contraseña, estado, fecha, codigo) VALUES ('$correoElectronico', '$contrasena', '$estado', '$fecha', '$codigo')";
-    
-        // Ejecuta la consulta
-        if (mysqli_query($conexion, $sql)) {
-            header("Location: Registrarse.html?cod=$codigo");
-            exit(); 
-        } else {
-            echo "Error: " . $sql . "<br>" . mysqli_error($conexion);
-        }
-
+        $sql = "INSERT INTO Usuarios (correoelectronico, contraseña, estado, fecha, codigo) VALUES ('$correoElectronico', '$contrasena', '$estado', now(), '$codigo')";
         $ip = $_SERVER['REMOTE_ADDR'];
         $navegador = $_SERVER['HTTP_USER_AGENT'];
         $navegador = substr($navegador, 0, 50);
         $accion = 'registro de usuario';
         $estado = 'Exitoso';
-        $descripcion = $correoElectronico . $contrasena;
-
-        // Insertar el registro en la tabla de registros con el ID de usuario obtenido de la consulta
-        if (insertarRegistro($conexion, $idUsuario, $correoelectronico, $accion, $ip, $navegador, $estado, $descripcion)) {
-            header("Location: login.html?login=fail&error=incorrect_credentials"); // Devolver error
-            exit(); // Detiene la ejecución del script
+        $descripcion = "Correo: " . $correoElectronico . " Contraseña: " .  $contrasena;
+        // Ejecuta la consulta
+        if (mysqli_query($conexion, $sql)) {
+            if (insertarRegistro($conexion, $idUsuario, $correoElectronico, $accion, $ip, $navegador, $estado, $descripcion)) {
+                header("Location: Registrarse.html?cod=$codigo");
+                exit(); 
+            } else {
+                echo "Error: " . $sql . "<br>" . mysqli_error($conexion);
+                exit(); // Detiene la ejecución del script
+            }   
         } else {
             echo "Error: " . $sql . "<br>" . mysqli_error($conexion);
-            exit(); // Detiene la ejecución del script
-        }   
+        }      
 
     }
 

@@ -1,4 +1,3 @@
-val_email.php
 <?php
 ob_start();
 session_start(); //Iniciar una sesión

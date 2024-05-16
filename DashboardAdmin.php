@@ -21,31 +21,37 @@ if ($result->num_rows > 0) {
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<meta name="description" content="" />
-<meta name="author" content="" />
-<title>Dashboard</title>
-<link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-<link href="css/styles.css" rel="stylesheet" />
-<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css" />
-<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css" />
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <!-- Referencia para AwesomeFont-->
+    <link href="/your-path-to-fontawesome/css/fontawesome.css" rel="stylesheet">
+    <link href="/your-path-to-fontawesome/css/brands.css" rel="stylesheet">
+    <link href="/your-path-to-fontawesome/css/solid.css" rel="stylesheet">
+    <!-- Favicon-->
+    <link rel="icon" href="src-ico/empreverest.svg" type="image/x-icon">
 
 
-<style>
-    .card-img {
-            width: 80%; /* Ajuste del tamaño de la imagen */
-            border-radius: 15px 0 0 15px; /* Bordes redondeados solo en la esquina izquierda */
-        }
-</style>
+    <style>
+        .card-img {
+                width: 80%; /* Ajuste del tamaño de la imagen */
+                border-radius: 15px 0 0 15px; /* Bordes redondeados solo en la esquina izquierda */
+            }
+    </style>
 </head>
 <body class="sb-nav-fixed">
 <nav class="sb-topnav navbar navbar-expand navbar-light bg-light">
@@ -150,42 +156,58 @@ if ($result->num_rows > 0) {
                     <li class="breadcrumb-item active">Dashboard</li>
                 </ol>   
                 <div class="row">
-                <table id="myTable" class="table align-middle mb-0 bg-white">
-            <thead class="bg-light">
-                <tr>
-                    <th>Foto</th>
-                    <th>Nombre</th>
-                    <th>Apellidos</th>
-                    <th>Correo electrónico</th>
-                    <th>Genero</th>
-                    <th>Tipo de cuenta</th>
-                    <th>Código de alumno</th>
-                    <th>Centro</th>
-                    <th>Estatus</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-            <?php
-                // Iterar sobre los datos almacenados en el arreglo y mostrarlos en la tabla
-                foreach ($usuarios as $usuario) {
-                    echo "<tr>";
-                    echo "<td><img src='{$usuario['foto_perfil']}' alt='Foto de perfil' style='width: 45px; height: 45px;' class='rounded-circle'></td>";
-                    echo "<td>{$usuario['nombre']}</td>";
-                    echo "<td>{$usuario['apellido']}</td>";
-                    echo "<td>{$usuario['correoelectronico']}</td>";
-                    echo "<td>{$usuario['genero']}</td>";
-                    echo "<td>{$usuario['tipocuenta']}</td>";
-                    echo "<td>{$usuario['codigo_alumno']}</td>";
-                    echo "<td>{$usuario['centro']}</td>";
-                    echo "<td>{$usuario['estado']}</td>";
-                    // Agregar columna para la foto de perfil
-                    echo "<td><button type='button' class='btn btn-primary btn-rounded edit-btn' data-bs-toggle='modal' data-bs-target='#editModal' data-mdb-ripple-init>Edit</button></td>";
-                    echo "</tr>";
-                }
-                ?>
-            </tbody>
-        </table>
+                    <table id="myTable" class="table align-middle mb-0 bg-white">
+                        <thead class="bg-light">
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Apellidos</th>
+                                <th>Correo electrónico</th>
+                                <th>Genero</th>
+                                <th>Tipo de cuenta</th>
+                                <th>Código de alumno</th>
+                                <th>Centro</th>
+                                <th>Estatus</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                            // Iterar sobre los datos almacenados en el arreglo y mostrarlos en la tabla
+                            foreach ($usuarios as $usuario) {
+                                echo "<tr>";                                
+                                echo "<td>{$usuario['nombre']}</td>";
+                                echo "<td>{$usuario['apellido']}</td>";
+                                echo "<td>{$usuario['correoelectronico']}</td>";
+                                echo "<td>{$usuario['genero']}</td>";
+                                echo "<td>{$usuario['tipocuenta']}</td>";
+                                echo "<td>{$usuario['codigo_alumno']}</td>";
+                                echo "<td>{$usuario['centro']}</td>";
+                                echo "<td>";
+                                // Mostrar "Activo" o "Inactivo" según el valor del estado
+                                if ($usuario['estado'] == 1) {
+                                    echo "Activo";
+                                } else {
+                                    echo "Inactivo";
+                                }
+                                echo "</td>";
+                                // Agregar columna para las acciones
+                                echo "<td>";
+                                echo "<button type='button' class='btn btn-primary btn-rounded edit-btn' data-bs-toggle='modal' data-bs-target='#editModal' data-mdb-ripple-init>";
+                                echo "<i class='fa-solid fa-pen-to-square fa-xl' style='color: #ffffff;'></i>";
+                                echo "</button>"; 
+                                if ($usuario['estado'] == 1) {
+                                    echo "<button type='button' class='btn btn-danger' style='width: 40px; height: 40px; margin-left: 10px;' onclick=\"openConfirmModal('" . $usuario['correoelectronico'] . "')\" data-bs-toggle='modal' data-bs-target='#confirmModal'><i class='fa-solid fa-xmark fa-xl' style='color: #ffffff;'></i></button>";
+                                } else {
+                                    // Mostrar el botón diferente si el usuario está inactivo
+                                    echo "<button type='button' class='btn btn-success' style='width: 40px; height: 40px; margin-left: 10px;' onclick=\"openConfirmModal1('" . $usuario['correoelectronico'] . "')\" data-bs-toggle='modal' data-bs-target='#confirmModal1'><i class='fa-solid fa-check' style='color: #ffffff;'></i></button>";
+                                }                                            
+                                echo "</td>";
+                                echo "</tr>";
+                            }
+                            
+                            ?>
+                        </tbody>
+                    </table>
                 </div>                      
             </div>
             
@@ -211,6 +233,60 @@ if ($result->num_rows > 0) {
     $('#myTable').DataTable();
   });
 </script>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Está seguro que desea desactivar este usuario?</p>
+        <form action="desactivar.php" method="post">
+          <div class="mb-3">
+            <label for="correo" class="form-label">Correo Electrónico</label>
+            <input type="email" class="form-control" id="correo" name="correo" readonly>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <!-- Cambiar el tipo de botón de button a submit y agregar el atributo name -->
+            <button type="submit" class="btn btn-danger" name="desactivarUsuario">Desactivar usuario</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModal1Label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModal1Label">Reactivar usuario</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Está seguro que desea reactivar este usuario?</p>
+        <form action="reactivar.php" method="post">
+          <div class="mb-3">
+            <label for="correo" class="form-label">Correo Electrónico</label>
+            <input type="email" class="form-control" id="correo" name="correo" readonly>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <!-- Cambiar el tipo de botón de button a submit y agregar el atributo name -->
+            <button type="submit" class="btn btn-success" name="desactivarUsuario">Reactivar usuario</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <!-- Modal -->
 <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
@@ -220,34 +296,25 @@ if ($result->num_rows > 0) {
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="editForm">
-                    <div class="row">
-                        <div class="col-md-4">
-
+                <form id="editForm" action = "actualizarAdmin.php" method = "post">
+                    
+                    <div>
+                        <div class="mb-3">
+                            <label for="correoElectronico" class="form-label">Correo Electrónico</label>
+                            <input type="email" class="form-control" id="correoElectronico" name="correoElectronico" readonly>
                         </div>
-                        <div class="col-md-4 text-center">
-                            <!-- Campo para mostrar la foto de perfil -->
-                            <img id="perfilImagen" src="#" alt="Foto de perfil" class="rounded-circle mb-3" style="max-width: 100%; height: auto; width: 150px; height: 150px;">
-                        </div>
-                        <div class="col-md-4">
-                            
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="fotoPerfil" class="form-label">Cambiar foto de perfil</label>
-                        <input type="file" class="form-control" id="fotoPerfil" name="fotoPerfil">
                     </div>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="nombre" class="form-label">Nombre</label>
-                                <input type="text" class="form-control" id="nombre" name="nombre" readonly>
+                                <input type="text" class="form-control" id="nombre" name="nombre" >
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="apellidos" class="form-label">Apellidos</label>
-                                <input type="text" class="form-control" id="apellidos" name="apellidos" readonly>
+                                <input type="text" class="form-control" id="apellidos" name="apellidos" >
                             </div>
                         </div>
                     </div>
@@ -287,22 +354,9 @@ if ($result->num_rows > 0) {
                                 </select>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="correoElectronico" class="form-label">Correo Electrónico</label>
-                                <input type="email" class="form-control" id="correoElectronico" name="correoElectronico">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="contrasena" class="form-label">Contraseña</label>
-                                <input type="password" class="form-control" id="contrasena" name="contrasena">
-                            </div>
-                        </div>
-                    </div>
+                    </div>                  
+                        
+                        
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                         <button type="submit" class="btn btn-primary">Guardar Cambios</button>
@@ -329,14 +383,7 @@ if ($result->num_rows > 0) {
             }));
         });
 
-        $('#fotoPerfil').on('change', function() {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                $('#perfilImagen').attr('src', e.target.result);
-            }
-            reader.readAsDataURL(this.files[0]);
-            });
-
+        
         // Agregar opciones al centro
         var centroOptions = [
             { value: 'CUALTOS', text: 'CUALTOS' },
@@ -356,21 +403,20 @@ if ($result->num_rows > 0) {
             }).get();
 
             // Llenar los campos del formulario en el modal con los datos de la fila
-            $('#nombre').val(rowData[1]);
-            $('#apellidos').val(rowData[2]); 
-            $('#genero').val(rowData[4]); // Establecer el valor del género
+            $('#nombre').val(rowData[0]);
+            $('#apellidos').val(rowData[1]); 
+            $('#genero').val(rowData[3]); // Establecer el valor del género
 
             // Obtener el valor del tipo de cuenta y establecerlo como seleccionado
-            var tipoCuentaValue = rowData[5];
+            var tipoCuentaValue = rowData[4];
             $('#tipoCuenta').val(tipoCuentaValue);
 
             // Obtener el valor del centro y establecerlo como seleccionado
-            var centroValue = rowData[7];
+            var centroValue = rowData[6];
             $('#centro').val(centroValue);        
 
-            $('#correoElectronico').val(rowData[3]);
-
-            $('#codigoAlumno').val(rowData[6]);
+            $('#correoElectronico').val(rowData[2]);
+            $('#codigoAlumno').val(rowData[5]);
 
             // Mostrar el modal
             $('#editModal').modal('show');
@@ -378,9 +424,23 @@ if ($result->num_rows > 0) {
     });
 </script>
 
+<script>
+    function openConfirmModal(correo) {
+        // Establecer el valor del campo de correo del modal
+        $('#exampleModal').find('#correo').val(correo);
+        // Mostrar el modal
+        $('#exampleModal').modal('show');
+    }
+</script>
 
-
-
+<script>
+    function openConfirmModal1(correo) {
+        // Establecer el valor del campo de correo del modal
+        $('#exampleModal1').find('#correo').val(correo);
+        // Mostrar el modal
+        $('#exampleModal1').modal('show');
+    }
+</script>
 
 </body>
 </html>
